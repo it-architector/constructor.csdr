@@ -6,6 +6,9 @@
 /.idea/*
 /nbproject/*
 
+# Игнорируем образцы с другого репозитория #
+/samples/*
+
 # Исключения #
 !.gitkeep
 !.htaccess
