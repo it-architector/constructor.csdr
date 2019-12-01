@@ -1,0 +1,772 @@
+<html id="1.2.1">
+<head id="1.2.1.1">
+    <title id="1.2.1.1.1"></title>
+    <meta id="1.2.1.1.2" charset="utf-8">
+    <script id="1.2.1.1.3" type="text/javascript">
+
+        $GLOBALS = [];
+
+        /*1 компонент проекта*/
+        $GLOBALS['Рефлексы'] = {
+            '1': {
+                'Ориентир': 'Интерфейс',
+                'Расчёты': 'Полная отработка всех рефлексов',
+                'Места': ['1.1'],
+                'Права': 'false',
+                'Вложение': {
+                    '1.1': {
+                        'Ориентир': 'Пример развёртки html',
+                        'Расчёты': 'Три новых тэга',
+                        'Места': ['1.2.1.2.1','1.2.1.2.1.3','1.2.1.2.1.4','1.2.1.2.1.4.1','1.2.1.2.1.3.1','1.2.1.2.1.3.2','1.2.1.2.1.1'],
+                        'Права': 'true',
+                        'Вложение': false
+                    },
+                    '1.2': {
+                        'Ориентир': 'Пример наполнения содержимым',
+                        'Расчёты': 'Текст для одного тэга',
+                        'Места': ['1.2.1.1.1.1','1.2.1.2.1.1.1','1.2.1.2.1.1.1.1','1.2.1.2.1.1.2','1.2.1.2.1.1.3','1.2.1.2.1.1.3.1'],
+                        'Права': 'true',
+                        'Вложение': false
+                    },
+                    '1.3': {
+                        'Ориентир': 'Пример установки стиля',
+                        'Расчёты': 'Стиль для body и одного тэга с содержимым',
+                        'Места': ['1.2.1.2.2','1.2.1.2.1.2','1.2.1.2.1.4.2','1.2.1.2.1.1.4'],
+                        'Права': 'true',
+                        'Вложение': false
+                    },
+                    '1.4': {
+                        'Ориентир': 'Пример установки favicon',
+                        'Расчёты': 'Применить обычную картинку',
+                        'Места': ['1.2.1.1.4','1.2.1.1.4.1','1.2.1.1.4.2','1.2.1.1.4.3'],
+                        'Права': 'true',
+                        'Вложение': false
+                    },
+                    '1.5': {
+                        'Ориентир': 'Пример смены текста по нажатию на тэг',
+                        'Расчёты': 'Картинка с фиксацией нажатия (Сменить текст 1 в зависимости от предыдущего значения. Всего два варианта смены текста.)',
+                        'Места': [{'1.2.1.2.1.3.3':['1.2.1.2.1.1.1.2','1.2.1.2.1.1.1.1']}],
+                        'Права': 'true',
+                        'Вложение': false
+                    },
+                    '1.6': {
+                        'Ориентир': 'Пример показа подсказки при отведении и скрытия при наведении на тэг',
+                        'Расчёты': 'Картинка с фиксацией наведения (сработает рефлекс 1.6.1) и отведения (сработает рефлекс 1.6.2)',
+                        'Места': ['1.2.1.2.1.5','1.2.1.2.1.5.2','1.2.1.2.1.5.1',{'1.2.1.2.1.3.4':['1.2.1.2.1.5.2']},{'1.2.1.2.1.3.5':['1.2.1.2.1.5.3']}],
+                        'Права': 'true',
+                        'Вложение': false
+                    },
+                }
+            }
+        };
+
+        /*2 компонент проекта*/
+        $GLOBALS['Места']    = {
+            '1': {
+                'Смысл': 'Память интерфейса',
+                'Роль': {'Категория': 'note'},
+                'Связи': false,
+                'Вложение': {
+                    '1.1': {
+                        'Смысл': 'Активация рефлексии',
+                        'Роль': {'Запрос': 'reaction'},
+                        'Связи': ['1'],
+                        'Вложение': {
+                            '1.1.1': {
+                                'Смысл': 'id рефлекса',
+                                'Роль': {'Атрибут':'information'},
+                                'Связи': false,
+                                'Вложение': '1'
+                            },
+                        }
+                    },
+                    '1.2': {
+                        'Смысл': 'Шаблон страницы',
+                        'Роль': {'Категория': 'note'},
+                        'Связи': false,
+                        'Вложение': {
+                            '1.2.1': {
+                                'Смысл': 'Тэг html',
+                                'Роль': {'Категория':'html'},
+                                'Связи': false,
+                                'Вложение': {
+                                    '1.2.1.1': {
+                                        'Смысл': 'Тэг head',
+                                        'Роль': {'Категория':'head'},
+                                        'Связи': false,
+                                        'Вложение': {
+                                            '1.2.1.1.1': {
+                                                'Смысл': 'Заголовок страницы',
+                                                'Роль': {'Категория':'title'},
+                                                'Связи': false,
+                                                'Вложение': {
+                                                    '1.2.1.1.1.1': {
+                                                        'Смысл': 'Информация',
+                                                        'Роль': {'Атрибут':'information'},
+                                                        'Связи': false,
+                                                        'Вложение': 'Архитектура CSDR'
+                                                    },
+                                                }
+                                            },
+                                            '1.2.1.1.2': {
+                                                'Смысл': 'Кодировка',
+                                                'Роль': {'Категория':'meta'},
+                                                'Связи': false,
+                                                'Вложение': {
+                                                    '1.2.1.1.2.1': {
+                                                        'Смысл': 'Скрипты',
+                                                        'Роль': {'Атрибут':'charset'},
+                                                        'Связи': false,
+                                                        'Вложение': 'utf-8'
+                                                    },
+                                                }
+                                            },
+                                            '1.2.1.1.3': {
+                                                'Смысл': 'Скрипты',
+                                                'Роль': {'Категория':'script'},
+                                                'Связи': false,
+                                                'Вложение': {
+                                                    '1.2.1.1.3.1': {
+                                                        'Смысл': 'Скрипты',
+                                                        'Роль': {'Атрибут':'type'},
+                                                        'Связи': false,
+                                                        'Вложение': 'text/javascript'
+                                                    },
+                                                }
+                                            },
+                                            '1.2.1.1.4': {
+                                                'Смысл': 'Иконка',
+                                                'Роль': {'Категория':'link'},
+                                                'Связи': false,
+                                                'Вложение': {
+                                                    '1.2.1.1.4.1': {
+                                                        'Смысл': 'rel',
+                                                        'Роль': {'Атрибут':'rel'},
+                                                        'Связи': false,
+                                                        'Вложение': 'shortcut icon'
+                                                    },
+                                                    '1.2.1.1.4.2': {
+                                                        'Смысл': 'Ссылка',
+                                                        'Роль': {'Атрибут':'href'},
+                                                        'Связи': false,
+                                                        'Вложение': './Дизайн/Logo.png'
+                                                    },
+                                                    '1.2.1.1.4.3': {
+                                                        'Смысл': 'type',
+                                                        'Роль': {'Атрибут':'type'},
+                                                        'Связи': false,
+                                                        'Вложение': 'image/png'
+                                                    },
+                                                }
+                                            },
+                                        }
+                                    },
+                                    '1.2.1.2': {
+                                        'Смысл': 'Тэг body',
+                                        'Роль': {'Категория':'body'},
+                                        'Связи': false,
+                                        'Вложение': {
+                                            '1.2.1.2.1': {
+                                                'Смысл': 'Тексты',
+                                                'Роль': {'Категория':'div'},
+                                                'Связи': false,
+                                                'Вложение': {
+                                                    '1.2.1.2.1.1': {
+                                                        'Смысл': 'Категория текста',
+                                                        'Роль': {'Категория':'h1'},
+                                                        'Связи': false,
+                                                        'Вложение': {
+                                                            '1.2.1.2.1.1.1': {
+                                                                'Смысл': 'Часть текста 1',
+                                                                'Роль': {'Категория':'text'},
+                                                                'Связи': false,
+                                                                'Вложение': {
+                                                                    '1.2.1.2.1.1.1.1': {
+                                                                        'Смысл': 'Информация',
+                                                                        'Роль': {'Атрибут':'information'},
+                                                                        'Связи': false,
+                                                                        'Вложение': 'В ХОРОШЕЙ АРХИТЕКТУРЕ'
+                                                                    },
+                                                                    '1.2.1.2.1.1.1.2': {
+                                                                        'Смысл': 'Изменение информации',
+                                                                        'Роль': {'Запрос': 'reaction'},
+                                                                        'Связи': ['2'],
+                                                                        'Вложение': false
+                                                                    },
+                                                                }
+                                                            },
+                                                            '1.2.1.2.1.1.2': {
+                                                                'Смысл': 'Перенос строки',
+                                                                'Роль': {'Категория':'br'},
+                                                                'Связи': false,
+                                                                'Вложение': false
+                                                            },
+                                                            '1.2.1.2.1.1.3': {
+                                                                'Смысл': 'Часть текста 2',
+                                                                'Роль': {'Категория':'text'},
+                                                                'Связи': false,
+                                                                'Вложение': {
+                                                                    '1.2.1.2.1.1.3.1': {
+                                                                        'Смысл': 'Информация',
+                                                                        'Роль': {'Атрибут':'information'},
+                                                                        'Связи': false,
+                                                                        'Вложение': 'Важна каждая деталь.'
+                                                                    },
+                                                                }
+                                                            },
+                                                            '1.2.1.2.1.1.4': {
+                                                                'Смысл': 'Выделенный текст',
+                                                                'Роль': {'Атрибут':'style'},
+                                                                'Связи': false,
+                                                                'Вложение': {
+                                                                    'border':'10px solid transparent',
+                                                                    'border-image':'10 repeating-linear-gradient(45deg, #1E90FF, #EE82EE 10px, transparent 10px, transparent 20px, #DAA520 20px, #228B22 30px,transparent 30px, transparent 40px)',
+                                                                    'font-family':'\'Rubik One\', sans-serif',
+                                                                    'font-size':'30px',
+                                                                    'text-transform':'uppercase',
+                                                                    'background':'#2E2F45',
+                                                                    'display':'table',
+                                                                    'margin':'20px auto',
+                                                                    'color':'white',
+                                                                    'border-radius':'5px',
+                                                                    'mix-blend-mode':'multiply',
+                                                                    'padding':'5px 10px'
+                                                                }
+                                                            },
+                                                        }
+                                                    },
+                                                    '1.2.1.2.1.2': {
+                                                        'Смысл': 'Выравнивание по центру',
+                                                        'Роль': {'Атрибут':'style'},
+                                                        'Связи': false,
+                                                        'Вложение': {
+                                                            'position':'absolute',
+                                                            'width':'100%',
+                                                            'top':'15%',
+                                                            'text-align':'center'
+                                                        }
+                                                    },
+                                                    '1.2.1.2.1.3': {
+                                                        'Смысл': 'Дом',
+                                                        'Роль': {'Категория':'img'},
+                                                        'Связи': false,
+                                                        'Вложение': {
+                                                            '1.2.1.2.1.3.1': {
+                                                                'Смысл': 'Ссылка',
+                                                                'Роль': {'Атрибут':'src'},
+                                                                'Связи': false,
+                                                                'Вложение': './Дизайн/Logo.png'
+                                                            },
+                                                            '1.2.1.2.1.3.2': {
+                                                                'Смысл': 'Вписка',
+                                                                'Роль': {'Атрибут':'style'},
+                                                                'Связи': false,
+                                                                'Вложение': {'border-radius': '50%'}
+                                                            },
+                                                            '1.2.1.2.1.3.3': {
+                                                                'Смысл': 'Кликанье мышки',
+                                                                'Роль': {'Ожидание':'click'},
+                                                                'Связи': false,
+                                                                'Вложение': false
+                                                            },
+                                                            '1.2.1.2.1.3.4': {
+                                                                'Смысл': 'Наведение мышки',
+                                                                'Роль': {'Ожидание':'hover'},
+                                                                'Связи': false,
+                                                                'Вложение': false
+                                                            },
+                                                            '1.2.1.2.1.3.5': {
+                                                                'Смысл': 'Отведение мышки',
+                                                                'Роль': {'Ожидание':'abduction'},
+                                                                'Связи': false,
+                                                                'Вложение': false
+                                                            },
+                                                        }
+                                                    },
+                                                    '1.2.1.2.1.4': {
+                                                        'Смысл': 'Заголовок',
+                                                        'Роль': {'Категория':'h1'},
+                                                        'Связи': false,
+                                                        'Вложение': {
+                                                            '1.2.1.2.1.4.1': {
+                                                                'Смысл': 'Текст 1',
+                                                                'Роль': {'Атрибут':'information'},
+                                                                'Связи': false,
+                                                                'Вложение': 'Архитектура CSDR'
+                                                            },
+                                                            '1.2.1.2.1.4.2': {
+                                                                'Смысл': 'Разноцветие',
+                                                                'Роль': {'Атрибут':'style'},
+                                                                'Связи': false,
+                                                                'Вложение': {
+                                                                    'font-family': '\'Rubik One\', sans-serif',
+                                                                    'font-size': '60px',
+                                                                    'text-transform': 'uppercase',
+                                                                    'background': 'repeating-linear-gradient(white, white 2px, #7AB4E2 2px, #7AB4E2 3px)',
+                                                                    '-webkit-background-clip': 'text',
+                                                                    '-webkit-text-fill-color': 'transparent',
+                                                                    'display': 'table',
+                                                                    'margin': '20px auto'
+                                                                }
+                                                            },
+                                                        }
+                                                    },
+                                                    '1.2.1.2.1.5': {
+                                                        'Смысл': 'Категория подсказки',
+                                                        'Роль': {'Категория':'p'},
+                                                        'Связи': false,
+                                                        'Вложение': {
+                                                            '1.2.1.2.1.5.1': {
+                                                                'Смысл': 'Текст',
+                                                                'Роль': {'Атрибут':'information'},
+                                                                'Связи': false,
+                                                                'Вложение': 'Нажми на картинку!'
+                                                            },
+                                                            '1.2.1.2.1.5.2': {
+                                                                'Смысл': 'Скрыть подсказку',
+                                                                'Роль': {'Атрибут':'style'},
+                                                                'Связи': false,
+                                                                'Вложение': {
+                                                                    'display': 'none'
+                                                                }
+                                                            },
+                                                            '1.2.1.2.1.5.3': {
+                                                                'Смысл': 'Показать подсказку',
+                                                                'Роль': {'Атрибут':'style'},
+                                                                'Связи': false,
+                                                                'Вложение': {
+                                                                    'display': 'inline-block',
+                                                                    'margin-top': '-490px',
+                                                                    'padding': '10px',
+                                                                    'font-weight': '600',
+                                                                    'background-color': 'rgba(0,0,0,.3)',
+                                                                }
+                                                            },
+                                                        }
+                                                    },
+                                                }
+                                            },
+                                            '1.2.1.2.2': {
+                                                'Смысл': 'Чёрный фон',
+                                                'Роль': {'Атрибут':'style'},
+                                                'Связи': false,
+                                                'Вложение': {
+                                                    'font-family':'sans-serif',
+                                                    'background':'#222',
+                                                    'color':'darkred',
+                                                    'transition':'all 0.4s ease-in-out',
+                                                }
+                                            },
+                                            '1.2.1.2.3': {
+                                                'Смысл': 'На случай когда браузер не работает со скриптами',
+                                                'Роль': {'Категория':'noscript'},
+                                                'Связи': false,
+                                                'Вложение': false
+                                            },
+                                        }
+                                    },
+                                }
+                            },
+                        }
+                    },
+                }
+            }
+        };
+
+        /*3 компонент проекта*/
+        $GLOBALS['Связи']    = {
+            '1': {
+                'Возможности': ['1.1.1'],
+                'Приобретение': null,
+                'Пример возможностей': {
+                    '1.1.1':'1'
+                },
+                'Пример приобретения': null,
+                'Реакция': ['1']
+            },
+            '2': {
+                'Возможности': ['1.2.1.2.1.1.1.1'],
+                'Приобретение': ['1.2.1.2.1.1.1.1'],
+                'Пример возможностей': {
+                    '1.2.1.2.1.1.1.1': 'В ХОРОШЕЙ АРХИТЕКТУРЕ',
+                },
+                'Пример приобретения': {
+                    '1.2.1.2.1.1.1.1': 'КАК И В ХОРОШЕМ ДИЗАЙНЕ',
+                },
+                'Реакция': ['2']
+            },
+        };
+
+        /*4 компонент проекта*/
+        $GLOBALS['Реакции']  = {
+            '1': {
+                'Способность'  : function($opportunities = []){
+
+                    /*алгоритм выдачи ссылки на место по id*/
+                    var $function_link_place_by_id = function ($place_id){
+
+                        /*создаём ссылку на корень места*/
+                        var $link = $GLOBALS['Места'];
+
+                        /*создаём уровень вложенности*/
+                        $place_id_explode = $place_id.split('.');
+
+                        $place_id_explode.forEach(function($place_id, $key) {
+                            if($key == 0){
+                                /*определяем название уровня*/
+                                $last_place_id = $place_id;
+                            }
+                            else{
+                                /*определяем название уровня*/
+                                $last_place_id = $last_place_id + '.' + $place_id;
+                                /*переходим во вложенность*/
+                                $link = $link['Вложение'];
+                            }
+                            /*переходим во вложенность*/
+                            $link = $link[$last_place_id];
+                        }, $link);
+
+                        /*результат*/
+                        return $link;
+                    };
+
+                    /*алгоритм выдачи id родителя тэга*/
+                    var $function_parent_tag_id_by_id = function ($place_id){
+
+                        /*id родительского тэга*/
+                        var $parent_tag_id = false;
+
+                        /*создаём ссылку на корень места*/
+                        var $link = $GLOBALS['Места'];
+
+                        /*создаём уровень вложенности*/
+                        $place_id_explode = $place_id.split('.');
+
+                        $place_id_explode.forEach(function($place_id_explode, $key) {
+                            if($key == 0){
+                                /*определяем название уровня*/
+                                $last_place_id = $place_id_explode;
+                            }
+                            else{
+                                /*определяем название уровня*/
+                                $last_place_id = $last_place_id + '.' + $place_id_explode;
+                                /*переходим во вложенность*/
+                                $link = $link['Вложение'];
+                            }
+                            /*переходим во вложенность*/
+                            $link = $link[$last_place_id];
+                            /*запоминаем последний тэг*/
+                            if($last_place_id!=$place_id && typeof($link['Роль']['Категория']) != "undefined"){
+                                $parent_tag_id = $last_place_id;
+                            }
+                        }, $link, $place_id, $parent_tag_id);
+
+                        /*результат*/
+                        return $parent_tag_id;
+
+                    }
+
+                    /*алгоритм активации допустимых рефлексов во вложении заданного рефлекса*/
+                    var $function_activation_permissible_goals = function($function_activation_permissible_goals, $function_link_place_by_id, $function_parent_tag_id_by_id, $goals_row){
+                        /*на случай когда вложений у рефлекса нет*/
+                        if(!$goals_row){
+                            return false;
+                        }
+                        /*обходим все рефлексы*/
+                        for(var $goal_id in $goals_row) {
+                            var $goal_row = $goals_row[$goal_id];
+                            /*если Права рефлекса выполнимы*/
+                            if(eval($goal_row['Права']) == true){
+
+                                /*алгоритм активации мест*/
+                                var $place_activation = function($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places, $stream_id = ''){
+                                    /*если есть места у рефлекса*/
+                                    if($places){
+                                        /*обходим все места рефлекса*/
+                                        for(var $place_key in $places) {
+                                            var $place_id = $places[$place_key];
+                                            /*исключаем зацикленность*/
+                                            if($goal_id == 1 && $place_id=='1.1'){
+                                                continue;
+                                            }
+                                            /*приложенный массив мест*/
+                                            var $places_attachment = false;
+                                            /*если есть обозначение многопоточности*/
+                                            if(typeof $place_id === "object"){
+                                                var $keys = Object.keys($place_id);
+                                                var $first_key = $keys[0];
+                                                /*массив мест для многопоточности*/
+                                                $places_attachment = $place_id[$first_key];
+                                                $place_id = $first_key;
+                                            }
+                                            /*значения места*/
+                                            var $place_value = $function_link_place_by_id($place_id);
+                                            /*если у места роль категории*/
+                                            if(typeof($place_value['Роль']['Категория']) != "undefined"){
+                                                /*если у места капсулирование всего*/
+                                                if($place_value['Роль']['Категория']=='note'){
+                                                    continue;
+                                                }
+                                                /*если у места роль html тэга*/
+                                                else{
+                                                    /*создаём новый тэг*/
+                                                    var new_tag = document.createElement($place_value['Роль']['Категория']);
+                                                    new_tag.setAttribute("id", $place_id + $stream_id);
+                                                    /*получаем id родительского тэга*/
+                                                    var $parent_tag_id = $function_parent_tag_id_by_id($place_id);
+                                                    /*вставляем новый тэг в родительский*/
+                                                    if(document.getElementById($parent_tag_id + $stream_id)){
+                                                        document.getElementById($parent_tag_id + $stream_id).appendChild(new_tag);
+                                                    }
+                                                    else{
+                                                        document.getElementById($parent_tag_id).appendChild(new_tag);
+                                                    }
+                                                }
+                                            }
+                                            /*если у места роль ожидания*/
+                                            else if(typeof($place_value['Роль']['Ожидание']) != "undefined"){
+                                                /*получаем id родительского тэга*/
+                                                var $parent_tag_id = $function_parent_tag_id_by_id($place_id);
+                                                /*создаём ссылку на DOM родительского тэга*/
+                                                if(document.getElementById($parent_tag_id + $stream_id)){
+                                                    var $parent_tag = document.getElementById($parent_tag_id + $stream_id);
+                                                }
+                                                else{
+                                                    var $parent_tag = document.getElementById($parent_tag_id);
+                                                }
+                                                /*если у места роль ожидания нажатия на оболочку*/
+                                                if($place_value['Роль']['Ожидание'] == 'click'){
+                                                    /*запоминаем необходимые данные*/
+                                                    $parent_tag.setAttribute("places-attachment-by-click", JSON.stringify($places_attachment));
+                                                    $parent_tag.setAttribute("goal-id-by-click", $goal_id);
+                                                    /*ставим на тэг активацию мест*/
+                                                    $parent_tag.onclick = function(){
+                                                        /*необходимые данные с тэга*/
+                                                        var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-click'));
+                                                        var $goal_id = this.getAttribute('goal-id-by-click');
+                                                        /*активируем приложенные места*/
+                                                        $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
+                                                    };
+                                                }
+                                                /*если у места роль ожидания наведения на оболочку*/
+                                                else if($place_value['Роль']['Ожидание'] == 'hover'){
+                                                    /*запоминаем необходимые данные*/
+                                                    $parent_tag.setAttribute("places-attachment-by-hover", JSON.stringify($places_attachment));
+                                                    $parent_tag.setAttribute("goal-id-by-hover", $goal_id);
+                                                    /*ставим на тэг активацию мест*/
+                                                    $parent_tag.onmouseover = function(){
+                                                        /*необходимые данные с тэга*/
+                                                        var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-hover'));
+                                                        var $goal_id = this.getAttribute('goal-id-by-hover');
+                                                        /*активируем приложенные места*/
+                                                        $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
+                                                    };
+                                                }
+                                                /*если у места роль ожидания отведения с оболочки*/
+                                                else if($place_value['Роль']['Ожидание'] == 'abduction'){
+                                                    /*запоминаем необходимые данные*/
+                                                    $parent_tag.setAttribute("places-attachment-by-abduction", JSON.stringify($places_attachment));
+                                                    $parent_tag.setAttribute("goal-id-by-abduction", $goal_id);
+                                                    /*ставим на тэг активацию мест*/
+                                                    $parent_tag.onmouseout = function(){
+                                                        /*необходимые данные с тэга*/
+                                                        var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-abduction'));
+                                                        var $goal_id = this.getAttribute('goal-id-by-abduction');
+                                                        /*активируем приложенные места*/
+                                                        $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
+                                                    };
+                                                }
+                                            }
+                                            /*если у места роль атрибута*/
+                                            else if(typeof($place_value['Роль']['Атрибут']) != "undefined"){
+                                                /*получаем id родительского тэга*/
+                                                var $parent_tag_id = $function_parent_tag_id_by_id($place_id);
+                                                /*создаём ссылку на DOM родительского тэга*/
+                                                if(document.getElementById($parent_tag_id + $stream_id)){
+                                                    var $parent_tag = document.getElementById($parent_tag_id + $stream_id);
+                                                }
+                                                else{
+                                                    var $parent_tag = document.getElementById($parent_tag_id);
+                                                }
+                                                /*если у места роль текста оболочки*/
+                                                if($place_value['Роль']['Атрибут'] == 'information'){
+                                                    /*вставляем информацию в родительский*/
+                                                    $parent_tag.innerHTML = $place_value['Вложение'];
+                                                }
+                                                /*если у места роль очистки оболочки*/
+                                                else if($place_value['Роль']['Атрибут'] == 'clear'){
+                                                    /*очищаем родительский тэг*/
+                                                    $parent_tag.innerHTML = '';
+                                                }
+                                                /*если у места роль стиля оболочки*/
+                                                else if($place_value['Роль']['Атрибут'] == 'style'){
+                                                    /*если стили заданы*/
+                                                    if($place_value['Вложение'] != null){
+                                                        /*ставим стили*/
+                                                        Object.assign($parent_tag.style,$place_value['Вложение']);
+                                                    }
+                                                }
+                                                /*если у места роль атрибута оболочки*/
+                                                else{
+                                                    /*вставляем/изменяем новый атрибут в родительский*/
+                                                    $parent_tag.setAttribute($place_value['Роль']['Атрибут'], $place_value['Вложение']);
+                                                }
+                                            }
+                                            /*если у места роль запроса*/
+                                            else if(typeof($place_value['Роль']['Запрос']) != "undefined" || typeof($place_value['Роль']['Запросы']) != "undefined"){
+                                                /*если у места есть связи*/
+                                                var $communications = $function_link_place_by_id($place_id)['Связи'];
+                                                if($communications){
+                                                    /*обходим все связи у места*/
+                                                    for(var $communication_key in $communications) {
+                                                        var $communication_id = $communications[$communication_key];
+                                                        /*получаем значения с мест*/
+                                                        var $opportunities = [];
+                                                        if($GLOBALS['Связи'][$communication_id]['Возможности'] != null){
+                                                            for(var $place_key in $GLOBALS['Связи'][$communication_id]['Возможности']) {
+                                                                var $place_id = $GLOBALS['Связи'][$communication_id]['Возможности'][$place_key];
+                                                                /*если у места роль многопоточность*/
+                                                                if(typeof($place_value['Роль']['Запросы']) != "undefined"){
+                                                                    $opportunities = $function_link_place_by_id($place_id)['Вложение'];
+                                                                }
+                                                                else{
+                                                                    $opportunities[$place_id] = $function_link_place_by_id($place_id)['Вложение'];
+                                                                }
+                                                            }
+                                                        }
+
+                                                        /*если запрос в реакцию*/
+                                                        if((typeof($place_value['Роль']['Запрос']) != "undefined" && $place_value['Роль']['Запрос']=='reaction') || (typeof($place_value['Роль']['Запросы']) != "undefined" && $place_value['Роль']['Запросы']=='reaction')){
+                                                            /*если у места роль многопоточность*/
+                                                            if(typeof($place_value['Роль']['Запросы']) != "undefined"){
+                                                                for(var $opportunity_key in $opportunities) {
+                                                                    var $opportunity = $opportunities[$opportunity_key];
+                                                                    /*активируем реакцию*/
+                                                                    $reaction_activation($function_link_place_by_id, $communication_out_activation, $communication_id, $opportunity);
+                                                                    /*активируем приложенные места*/
+                                                                    $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, $stream_id + '-' + $opportunity_key);
+                                                                }
+                                                            }
+                                                            else{
+                                                                /*активируем реакцию*/
+                                                                $reaction_activation($function_link_place_by_id, $communication_out_activation, $communication_id, $opportunities);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                };
+
+                                /*алгоритм активации out у связи*/
+                                $communication_out_activation = function($function_link_place_by_id,$results){
+                                    /*обрабатываем приобретения*/
+                                    if($results!=null && typeof $results === "object"){
+                                        /*сохраняем результат по местам*/
+                                        for(var $place_id in $results) {
+                                            var $place_data = $results[$place_id];
+                                            /*создаём ссылку на место*/
+                                            var $link_result_place_by_id = $function_link_place_by_id($place_id);
+                                            /*сохраняем значение*/
+                                            $link_result_place_by_id['Вложение'] = $place_data;
+                                        }
+                                    }
+                                };
+
+                                /*алгоритм активации реакций*/
+                                $reaction_activation = function($function_link_place_by_id, $communication_out_activation, $communication_id, $opportunities){
+                                    /*если есть реакции у связи*/
+                                    if($GLOBALS['Связи'][$communication_id]['Реакция']){
+                                        /*обходим реакции связи*/
+                                        for(var $reaction_key in $GLOBALS['Связи'][$communication_id]['Реакция']) {
+                                            var $reaction_id = $GLOBALS['Связи'][$communication_id]['Реакция'][$reaction_key];
+                                            /*выполняем реакцию у связи*/
+                                            var $results = $GLOBALS['Реакции'][$reaction_id]['Способность']($opportunities);
+                                            /*активируем out у связи*/
+                                            $communication_out_activation($function_link_place_by_id,$results);
+                                        }
+                                    }
+                                };
+
+                                /*активируем места*/
+                                $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $goal_row['Места']);
+
+                                /*если у рефлекса есть ещё вложение*/
+                                if($goal_row['Вложение']){
+                                    /*обходим рефлексы внутри вложений рефлекса*/
+                                    $function_activation_permissible_goals($function_activation_permissible_goals, $function_link_place_by_id, $function_parent_tag_id_by_id, $goal_row['Вложение']);
+                                }
+                            }
+                        }
+                        /*результат*/
+                        return true;
+                    };
+
+
+
+                    /*id вызываемого рефлекса*/
+                    var $reflex_id = $opportunities['1.1.1'];
+
+                    /*создаём ссылку на корень места*/
+                    var $reflex_value = $GLOBALS['Рефлексы'];
+
+                    /*создаём уровень вложенности*/
+                    $reflex_id_explode = $reflex_id.split('.');
+
+                    $reflex_id_explode.forEach(function($reflex_id, $key) {
+                        if($key == 0){
+                            /*определяем название уровня*/
+                            $last_reflex_id = $reflex_id;
+                        }
+                        else{
+                            /*определяем название уровня*/
+                            $last_reflex_id = $last_reflex_id + '.' + $reflex_id;
+                            /*переходим во вложенность*/
+                            $reflex_value = $reflex_value['Вложение'];
+                        }
+                        /*переходим во вложенность*/
+                        $reflex_value = $reflex_value[$last_reflex_id];
+                    }, $reflex_value);
+
+                    /*ставим основному рефлексу открытые права*/
+                    $reflex_value['Права'] = 'true';
+
+                    /*вносим основной рефлекс в массив*/
+                    $reflex_value[$reflex_id] = $reflex_value;
+
+                    /*активируем все допустимые рефлексы*/
+                    $function_activation_permissible_goals($function_activation_permissible_goals, $function_link_place_by_id, $function_parent_tag_id_by_id, $reflex_value);
+
+                    /*результат*/
+                    return null;
+
+                }
+            },
+            '2': {
+                'Способность'  : function($opportunities = []){
+
+                    if($opportunities['1.2.1.2.1.1.1.1'] == 'КАК И В ХОРОШЕМ ДИЗАЙНЕ'){
+                        var $dialog = 'В ХОРОШЕЙ АРХИТЕКТУРЕ';
+                    }
+                    else{
+                        var $dialog = 'КАК И В ХОРОШЕМ ДИЗАЙНЕ';
+                    }
+
+                    /*результат*/
+                    return {
+                        '1.2.1.2.1.1.1.1': $dialog,
+                    };
+                }
+            },
+        };
+
+        /*активируем интерфейс*/
+        document.addEventListener('DOMContentLoaded', function() {
+            $GLOBALS['Реакции'][1]['Способность']({'1.1.1':$GLOBALS['Места']['1']['Вложение']['1.1']['Вложение']['1.1.1']['Вложение']});
+        });
+
+    </script>
+</head>
+<body id="1.2.1.2"><noscript id="1.2.1.2.3">Для отображения сайта включите JavaScript.</noscript></body>
+</html>
