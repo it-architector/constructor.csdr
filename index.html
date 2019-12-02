@@ -49,7 +49,7 @@
                                 'Ориентир': 'Анимация',
                                 'Расчёты': 'Земной шар',
                                 'Места': ['1.2.1.2.3.2.2.2', '1.2.1.2.3.2.2.2.1', '1.2.1.2.3.2.2.2.2', '1.2.1.2.3.2.2.2.2.1', '1.2.1.2.3.2.2.2.2.2', '1.2.1.2.3.2.2.2.2.3', '1.2.1.2.3.2.2.2.2.4', '1.2.1.2.3.2.2.2.2.4.1', '1.2.1.2.3.2.2.2.2.4.2', '1.2.1.2.3.2.2.2.2.5', '1.2.1.2.3.2.2.2.2.5.1', '1.2.1.2.3.2.2.2.2.5.2', '1.2.1.2.3.2.2.2.2.6', '1.2.1.2.3.2.2.2.2.6.1', '1.2.1.2.3.2.2.2.2.6.2'],
-                                'Права': 'true',
+                                'Права': '(navigator.plugins && (navigator.plugins["Shockwave Flash"] || navigator.plugins["Shockwave Flash 2.0"])) || (navigator.mimeTypes && navigator.mimeTypes[\'application/x-shockwave-flash\'] && navigator.mimeTypes[\'application/x-shockwave-flash\'].enabledPlugin) || (!navigator.plugins && !navigator.mimeTypes)',
                                 'Вложение': false
                             },
                         }
@@ -765,7 +765,7 @@
                         for(var $goal_id in $goals_row) {
                             var $goal_row = $goals_row[$goal_id];
                             /*если Права рефлекса выполнимы*/
-                            if(eval($goal_row['Права']) == true){
+                            if(eval($goal_row['Права'])){
 
                                 /*алгоритм активации мест*/
                                 var $place_activation = function($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places, $stream_id = ''){
