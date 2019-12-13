@@ -10,9 +10,17 @@
         $GLOBALS['Рефлексы'] = {
             '1': {
                 'Ориентир': 'Интерфейс',
-                'Расчёты': 'Полная отработка всех рефлексов',
-                'Места': ['1.1'],
-                'Права': 'false',
+                'Расчёты': 'Одностраничник',
+                'Места': [
+                    '1.1',
+                    '1.1.2','1.1',
+                    '1.1.3','1.1',
+                    '1.1.4','1.1',
+                    '1.1.5','1.1',
+                    '1.1.6','1.1',
+                    '1.1.7','1.1',
+                ],
+                'Права': 'true',
                 'Вложение': {
                     '1.1': {
                         'Ориентир': 'Блоки страницы',
@@ -89,6 +97,42 @@
                                 'Роль': {'Атрибут':'information'},
                                 'Связь': false,
                                 'Вложение': '1'
+                            },
+                            '1.1.2': {
+                                'Смысл': 'Смена id рефлекса на 1.1',
+                                'Роль': {'Запрос': 'reaction'},
+                                'Связь': '3',
+                                'Вложение': false
+                            },
+                            '1.1.3': {
+                                'Смысл': 'Смена id рефлекса на 1.1.1',
+                                'Роль': {'Запрос': 'reaction'},
+                                'Связь': '4',
+                                'Вложение': false
+                            },
+                            '1.1.4': {
+                                'Смысл': 'Смена id рефлекса на 1.1.2',
+                                'Роль': {'Запрос': 'reaction'},
+                                'Связь': '5',
+                                'Вложение': false
+                            },
+                            '1.1.5': {
+                                'Смысл': 'Смена id рефлекса на 1.1.3',
+                                'Роль': {'Запрос': 'reaction'},
+                                'Связь': '6',
+                                'Вложение': false
+                            },
+                            '1.1.6': {
+                                'Смысл': 'Смена id рефлекса на 1.1.4',
+                                'Роль': {'Запрос': 'reaction'},
+                                'Связь': '7',
+                                'Вложение': false
+                            },
+                            '1.1.7': {
+                                'Смысл': 'Смена id рефлекса на 1.1.5',
+                                'Роль': {'Запрос': 'reaction'},
+                                'Связь': '8',
+                                'Вложение': false
                             },
                         }
                     },
@@ -172,7 +216,7 @@
                                                     '1.2.1.1.4.4': {
                                                         'Смысл': 'Рандомный favicon',
                                                         'Роль': {'Запрос':'reaction'},
-                                                        'Связь': '3',
+                                                        'Связь': '9',
                                                         'Вложение': false
                                                     },
                                                 }
@@ -657,7 +701,7 @@
                                                                                 'Связь': false,
                                                                                 'Вложение': {
                                                                                     'float':'left',
-                                                                                    'padding':'0 0 0 220px',
+                                                                                    'padding':'0 0 0 190px',
                                                                                     'height':'80px',
                                                                                     'width':'320px'
                                                                                 }
@@ -810,13 +854,73 @@
                 'Реакция': '2'
             },
             '3': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': ['1.1.1'],
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    '1.1.1': '1.1',
+                },
+                'Реакция': '3'
+            },
+            '4': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': ['1.1.1'],
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    '1.1.1': '1.1.1',
+                },
+                'Реакция': '4'
+            },
+            '5': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': ['1.1.1'],
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    '1.1.1': '1.1.2',
+                },
+                'Реакция': '5'
+            },
+            '6': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': ['1.1.1'],
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    '1.1.1': '1.1.3',
+                },
+                'Реакция': '6'
+            },
+            '7': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': ['1.1.1'],
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    '1.1.1': '1.1.4',
+                },
+                'Реакция': '7'
+            },
+            '8': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': ['1.1.1'],
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    '1.1.1': '1.1.5',
+                },
+                'Реакция': '8'
+            },
+            '9': {
                 'Возможности': null,
                 'Приобретение': ['1.2.1.1.4.2'],
                 'Образец возможностей': null,
                 'Образец приобретения': {
                     '1.2.1.1.4.2':'./Дизайн/favicon1.png'
                 },
-                'Реакция': '3'
+                'Реакция': '9'
             },
         };
 
@@ -890,7 +994,7 @@
                     }
 
                     /*алгоритм активации допустимых рефлексов во вложении заданного рефлекса*/
-                    var $function_activation_permissible_goals = function($function_activation_permissible_goals, $function_link_place_by_id, $function_parent_tag_id_by_id, $goals_row){
+                    var $function_activation_permissible_goals = function($function_link_place_by_id, $function_parent_tag_id_by_id, $goals_row){
                         /*на случай когда вложений у рефлекса нет*/
                         if(!$goals_row){
                             return false;
@@ -902,14 +1006,14 @@
                             if(eval($goal_row['Права'])){
 
                                 /*алгоритм активации мест*/
-                                var $place_activation = function($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places, $stream_id = ''){
+                                var $place_activation = function($function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places, $stream_id = ''){
                                     /*если есть места у рефлекса*/
                                     if($places){
                                         /*обходим все места рефлекса*/
                                         for(var $place_key in $places) {
                                             var $place_id = $places[$place_key];
                                             /*исключаем зацикленность*/
-                                            if($goal_id == 1 && $place_id=='1.1'){
+                                            if($GLOBALS['Места']['1']['Вложение']['1.1']['Вложение']['1.1.1']['Вложение'] == 1 && $place_id=='1.1'){
                                                 continue;
                                             }
                                             /*приложенный массив мест*/
@@ -968,7 +1072,7 @@
                                                         var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-click'));
                                                         var $goal_id = this.getAttribute('goal-id-by-click');
                                                         /*активируем приложенные места*/
-                                                        $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
+                                                        $place_activation($function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
                                                     };
                                                 }
                                                 /*если у места роль ожидания наведения на оболочку*/
@@ -982,7 +1086,7 @@
                                                         var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-hover'));
                                                         var $goal_id = this.getAttribute('goal-id-by-hover');
                                                         /*активируем приложенные места*/
-                                                        $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
+                                                        $place_activation($function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
                                                     };
                                                 }
                                                 /*если у места роль ожидания отведения с оболочки*/
@@ -996,7 +1100,7 @@
                                                         var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-abduction'));
                                                         var $goal_id = this.getAttribute('goal-id-by-abduction');
                                                         /*активируем приложенные места*/
-                                                        $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
+                                                        $place_activation($function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, '');
                                                     };
                                                 }
                                             }
@@ -1037,7 +1141,7 @@
                                             }
                                             /*если у места роль запроса*/
                                             else if(typeof($place_value['Роль']['Запрос']) != "undefined" || typeof($place_value['Роль']['Запросы']) != "undefined"){
-                                                /*если у места есть связи*/
+                                                /*если у места есть связь*/
                                                 if($function_link_place_by_id($place_id)['Связь']){
                                                     var $communication_id = $function_link_place_by_id($place_id)['Связь'];
                                                     /*получаем значения с мест*/
@@ -1066,7 +1170,7 @@
                                                                 /*активируем реакцию*/
                                                                 $reaction_activation($function_link_place_by_id, $communication_out_activation, $communication_id, $opportunity);
                                                                 /*активируем приложенные места*/
-                                                                $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, $stream_id + '-' + $key);
+                                                                $place_activation($function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $places_attachment, $stream_id + '-' + $key);
                                                             }
                                                         }
                                                         else{
@@ -1108,13 +1212,8 @@
                                 };
 
                                 /*активируем места*/
-                                $place_activation($goal_id, $function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $goal_row['Места']);
+                                $place_activation($function_link_place_by_id, $place_activation, $reaction_activation, $communication_out_activation, $goal_row['Места']);
 
-                                /*если у рефлекса есть ещё вложение*/
-                                if($goal_row['Вложение']){
-                                    /*обходим рефлексы внутри вложений рефлекса*/
-                                    $function_activation_permissible_goals($function_activation_permissible_goals, $function_link_place_by_id, $function_parent_tag_id_by_id, $goal_row['Вложение']);
-                                }
                             }
                         }
                         /*результат*/
@@ -1147,14 +1246,16 @@
                         $reflex_value = $reflex_value[$last_reflex_id];
                     }, $reflex_value);
 
-                    /*ставим основному рефлексу открытые права*/
-                    $reflex_value['Права'] = 'true';
+                    /*убираем лишнее*/
+                    if($reflex_value['Вложение'] === undefined){
+                        $reflex_value['Вложение'] = {};
+                    }
 
                     /*вносим основной рефлекс в массив*/
                     $reflex_value[$reflex_id] = $reflex_value;
 
                     /*активируем все допустимые рефлексы*/
-                    $function_activation_permissible_goals($function_activation_permissible_goals, $function_link_place_by_id, $function_parent_tag_id_by_id, $reflex_value);
+                    $function_activation_permissible_goals($function_link_place_by_id, $function_parent_tag_id_by_id, $reflex_value);
 
                     /*результат*/
                     return null;
@@ -1173,6 +1274,60 @@
                 }
             },
             '3': {
+                'Способность'  : function($opportunities = []){
+
+                    /*результат*/
+                    return {
+                        '1.1.1': '1.1'
+                    };
+                }
+            },
+            '4': {
+                'Способность'  : function($opportunities = []){
+
+                    /*результат*/
+                    return {
+                        '1.1.1': '1.1.1'
+                    };
+                }
+            },
+            '5': {
+                'Способность'  : function($opportunities = []){
+
+                    /*результат*/
+                    return {
+                        '1.1.1': '1.1.2'
+                    };
+                }
+            },
+            '6': {
+                'Способность'  : function($opportunities = []){
+
+                    /*результат*/
+                    return {
+                        '1.1.1': '1.1.3'
+                    };
+                }
+            },
+            '7': {
+                'Способность'  : function($opportunities = []){
+
+                    /*результат*/
+                    return {
+                        '1.1.1': '1.1.4'
+                    };
+                }
+            },
+            '8': {
+                'Способность'  : function($opportunities = []){
+
+                    /*результат*/
+                    return {
+                        '1.1.1': '1.1.5'
+                    };
+                }
+            },
+            '9': {
                 'Способность'  : function($opportunities = []){
 
                     var min = 1;
