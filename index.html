@@ -822,33 +822,33 @@
         /*3 компонент проекта*/
         $GLOBALS['Связи']    = {
             '1': {
-                'Возможности': ['1.1.1'],
+                'Возможности': {'1.1.1':'reflex_id'},
                 'Приобретение': null,
                 'Образец возможностей': {
-                    '1.1.1':'1'
+                    'reflex_id':'1'
                 },
                 'Образец приобретения': null,
                 'Реакция': '1'
             },
             '2': {
                 'Возможности': {'1.2.1.2.3.2.2.4.2.3':'array'},
-                'Приобретение': ['1.2.1.2.3.2.2.4.2.4.1.2.1.3','1.2.1.2.3.2.2.4.2.4.1.2.1.2','1.2.1.2.3.2.2.4.2.4.1.3.2'],
+                'Приобретение': {'name':'1.2.1.2.3.2.2.4.2.4.1.2.1.3','url':'1.2.1.2.3.2.2.4.2.4.1.2.1.2','date':'1.2.1.2.3.2.2.4.2.4.1.3.2'},
                 'Образец возможностей': {
-                    '1.2.1.2.3.2.2.4.2.3':[
+                    'array':[
                         {'name':'Открыт видео-канал','url':'https://www.youtube.com/channel/UCv1ukgLzxa0BvfQ7_YufV7w','date':'07.12.2019'},
                         {'name':'Разработаны образцы','url':'https://framework-csdr.ru/samples/Архитектура/','date':'01.12.2019'},
                     ]
                 },
                 'Образец приобретения': {
                     0:{
-                        '1.2.1.2.3.2.2.4.2.4.1.2.1.3':'Открыт видео-канал',
-                        '1.2.1.2.3.2.2.4.2.4.1.2.1.2':'https://www.youtube.com/channel/UCv1ukgLzxa0BvfQ7_YufV7w',
-                        '1.2.1.2.3.2.2.4.2.4.1.3.2':'07.12.2019'
+                        'name':'Открыт видео-канал',
+                        'url':'https://www.youtube.com/channel/UCv1ukgLzxa0BvfQ7_YufV7w',
+                        'date':'07.12.2019'
                     },
                     1:{
-                        '1.2.1.2.3.2.2.4.2.4.1.2.1.3':'Разработаны образцы',
-                        '1.2.1.2.3.2.2.4.2.4.1.2.1.2':'https://framework-csdr.ru/samples/Архитектура/',
-                        '1.2.1.2.3.2.2.4.2.4.1.3.2':'01.12.2019'
+                        'name':'Разработаны образцы',
+                        'url':'https://framework-csdr.ru/samples/Архитектура/',
+                        'date':'01.12.2019'
                     }
                 },
                 'Реакция': '2'
@@ -856,69 +856,69 @@
             '3': {
                 'Тип': 'Локальное',
                 'Возможности': null,
-                'Приобретение': ['1.1.1'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.1.1': '1.1',
+                    'reflex_id': '1.1',
                 },
                 'Реакция': '3'
             },
             '4': {
                 'Тип': 'Локальное',
                 'Возможности': null,
-                'Приобретение': ['1.1.1'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.1.1': '1.1.1',
+                    'reflex_id': '1.1.1',
                 },
                 'Реакция': '4'
             },
             '5': {
                 'Тип': 'Локальное',
                 'Возможности': null,
-                'Приобретение': ['1.1.1'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.1.1': '1.1.2',
+                    'reflex_id': '1.1.2',
                 },
                 'Реакция': '5'
             },
             '6': {
                 'Тип': 'Локальное',
                 'Возможности': null,
-                'Приобретение': ['1.1.1'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.1.1': '1.1.3',
+                    'reflex_id': '1.1.3',
                 },
                 'Реакция': '6'
             },
             '7': {
                 'Тип': 'Локальное',
                 'Возможности': null,
-                'Приобретение': ['1.1.1'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.1.1': '1.1.4',
+                    'reflex_id': '1.1.4',
                 },
                 'Реакция': '7'
             },
             '8': {
                 'Тип': 'Локальное',
                 'Возможности': null,
-                'Приобретение': ['1.1.1'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.1.1': '1.1.5',
+                    'reflex_id': '1.1.5',
                 },
                 'Реакция': '8'
             },
             '9': {
                 'Возможности': null,
-                'Приобретение': ['1.2.1.1.4.2'],
+                'Приобретение': {'reflex_id':'1.1.1'},
                 'Образец возможностей': null,
                 'Образец приобретения': {
-                    '1.2.1.1.4.2':'./Дизайн/favicon1.png'
+                    'url':'./Дизайн/favicon1.png'
                 },
                 'Реакция': '9'
             },
@@ -968,13 +968,13 @@
                     };
 
                     /*алгоритм активации мест*/
-                    var $function_place_activation = function($opportunities = {'places':null,'stream_id':null}){
+                    var $function_place_activation = function($opportunities = {'places':null,'parent_additional_id':null,'function_place_activation':null}){
 
                         var $places = $opportunities['places'];
-                        var $stream_id = $opportunities['stream_id'];
+                        var $parent_additional_id = $opportunities['parent_additional_id'];
 
                         /*алгоритм выдачи ссылки на место по id*/
-                        var $function_place_link = function ($opportunities = {'place_id':null}){
+                        var $function_get_place_link = function ($opportunities = {'place_id':null}){
 
                             var $place_id = $opportunities['place_id'];
 
@@ -1006,12 +1006,12 @@
                         };
 
                         /*алгоритм выдачи id родителя тэга*/
-                        var $function_parent_tag_id_by_id = function ($opportunities = {'child_place_id':null}){
+                        var $function_get_parent_id = function ($opportunities = {'child_place_id':null}){
 
                             var $child_place_id = $opportunities['child_place_id'];
 
                             /*id родительского тэга*/
-                            var $parent_tag_id = false;
+                            var $parent_id = false;
 
                             /*создаём ссылку на корень места*/
                             var $link = $GLOBALS['Места'];
@@ -1036,269 +1036,407 @@
                                 $link = $link[$last_place_id];
                                 /*запоминаем последний тэг*/
                                 if($last_place_id!=$child_place_id && typeof($link['Роль']['Категория']) != "undefined" && $link['Роль']['Категория']!='note'){
-                                    $parent_tag_id = $last_place_id;
+                                    $parent_id = $last_place_id;
                                 }
-                            }, $link, $child_place_id, $parent_tag_id, $last_place_id);
+                            }, $link, $child_place_id, $parent_id, $last_place_id);
 
                             /*результат*/
-                            return $parent_tag_id;
+                            return $parent_id;
 
                         };
 
-                        /*алгоритм установки значений по местам*/
-                        var $function_place_set_values = function($opportunities = {'function_place_link':null,'results':null}){
+                        /*алгоритм получения импортируемых значений мест*/
+                        var $function_get_import_place_values = function($opportunities = {'communication_id':null,'function_get_place_link':null}){
+                            $communication_id = $opportunities['communication_id'];
+                            /*получаем значения с мест*/
+                            var $place_values = [];
+                            if($GLOBALS['Связи'][$communication_id]['Возможности'] != null){
+                                for(var $place_id in $GLOBALS['Связи'][$communication_id]['Возможности']) {
+                                    var $place_code = $GLOBALS['Связи'][$communication_id]['Возможности'][$place_id];
+                                    $place_values[$place_code] = $opportunities['function_get_place_link']({'place_id':$place_id})['Вложение'];
+                                }
+                            }
+                            return $place_values;
+                        };
 
-                            var $function_place_link = $opportunities['function_place_link'];
+                        /*алгоритм получения родительского линка по id ребёнка*/
+                        var $function_get_parent_link = function($opportunities = {'child_place_id':null,'parent_additional_id':null,'function_get_parent_id':null}){
+                            /*получаем id родительского тэга*/
+                            var $parent_id = $opportunities['function_get_parent_id']({'child_place_id':$opportunities['child_place_id']});
+                            /*создаём ссылку на DOM родительского тэга*/
+                            if(document.getElementById($parent_id + $opportunities['parent_additional_id'])){
+                                var $parent_link = document.getElementById($parent_id + $opportunities['parent_additional_id']);
+                            }
+                            else{
+                                var $parent_link = document.getElementById($parent_id);
+                            }
+                            return $parent_link;
+                        };
+
+                        /*алгоритм установки значений по местам*/
+                        var $function_set_place_values = function($opportunities = {'function_get_place_link':null,'results':null}){
+
+                            var $function_get_place_link = $opportunities['function_get_place_link'];
                             var $results = $opportunities['results'];
 
                             /*сохраняем результат по местам*/
                             for(var $place_id_in in $results) {
                                 var $place_data = $results[$place_id_in];
                                 /*создаём ссылку на место*/
-                                var $place_link = $function_place_link({'place_id':$place_id_in});
+                                var $place_link = $function_get_place_link({'place_id':$place_id_in});
                                 /*сохраняем значение*/
                                 $place_link['Вложение'] = $place_data;
                             }
                         };
 
                         /*алгоритм активации реакций*/
-                        var $function_reaction_activation = function($opportunities = {'communication_id':null,'opportunities_in':null,'function_place_link':null,'function_place_set_values':null}){
+                        var $function_reaction_activation = function($opportunities = {'communication_id':null,'opportunities_in':null,'function_get_place_link':null,'function_set_place_values':null}){
 
-                            var $function_place_link = $opportunities['function_place_link'];
-                            var $function_place_set_values = $opportunities['function_place_set_values'];
+                            var $function_get_place_link = $opportunities['function_get_place_link'];
+                            var $function_set_place_values = $opportunities['function_set_place_values'];
                             var $communication_id = $opportunities['communication_id'];
                             var $opportunities_in = $opportunities['opportunities_in'];
 
                             /*если есть реакции у связи*/
                             if($GLOBALS['Связи'][$communication_id]['Реакция']){
                                 var $reaction_id = $GLOBALS['Связи'][$communication_id]['Реакция'];
+
                                 /*выполняем реакцию у связи*/
                                 var $results = $GLOBALS['Реакции'][$reaction_id]['Способность']($opportunities_in);
+
                                 /*если есть что сохранять по местам*/
                                 if($GLOBALS['Связи'][$communication_id]['Приобретение'] != null){
-                                    var $resuls_in = [];
-                                    for(var $key in $GLOBALS['Связи'][$communication_id]['Приобретение']) {
-                                        var $place_id_in = $GLOBALS['Связи'][$communication_id]['Приобретение'][$key];
+                                    var $place_values = [];
+                                    for(var $place_code in $GLOBALS['Связи'][$communication_id]['Приобретение']) {
+                                        var $place_id = $GLOBALS['Связи'][$communication_id]['Приобретение'][$place_code];
                                         /*берём значение из результата*/
-                                        if(typeof($results[$place_id_in]) != "undefined"){
-                                            $resuls_in[$place_id_in] = $results[$place_id_in];
+                                        if(typeof($results[$place_code]) != "undefined"){
+                                            $place_values[$place_id] = $results[$place_code];
                                         }
                                         else{
-                                            $resuls_in[$place_id_in] = null;
+                                            $place_values[$place_id] = null;
                                         }
                                     }
                                     /*сохраняем значения*/
-                                    $function_place_set_values({
-                                        'function_place_link':$function_place_link,
-                                        'results':$resuls_in
+                                    $function_set_place_values({
+                                        'function_get_place_link':$function_get_place_link,
+                                        'results':$place_values
                                     });
                                 }
                             }
                         };
 
+                        /*алгоритм активации ролей*/
+                        var $function_activation_roles = {
+                            'Категория': {
+                                'note': function ($opportunities = {}) {
+                                    /*ничего не делаем*/
+                                },
+                                /*если у места роль html тэга*/
+                                'other': function ($opportunities = {'place_value':null,'parent_additional_id':null,'function_get_parent_link':null}) {
+
+                                    /*создаём новый тэг*/
+                                    var $new_tag = document.createElement($opportunities['place_value']['Роль']['Категория']);
+
+                                    /*присваиваем индетификатор*/
+                                    $new_tag.setAttribute("id", $place_id + $parent_additional_id);
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $function_get_parent_link({
+                                        'child_place_id':$place_id,
+                                        'parent_additional_id':$parent_additional_id,
+                                        'function_get_parent_id':$function_get_parent_id
+                                    });
+
+                                    /*вставляем новый тэг в родительский*/
+                                    $parent_link.appendChild($new_tag);
+                                },
+                            },
+                            'Ожидание': {
+                                /*если у места роль ожидания нажатия на оболочку*/
+                                'click': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'function_get_parent_link':null,'function_get_parent_id':null,'function_place_activation':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*запоминаем необходимые данные*/
+                                    $parent_link.setAttribute("places-attachment-by-click", JSON.stringify($opportunities['attachment_places']));
+                                    $parent_link.setAttribute("parent-additional-id-by-click", JSON.stringify($opportunities['parent_additional_id']));
+
+                                    /*ставим на тэг активацию мест*/
+                                    $parent_link.onclick = function(){
+
+                                        /*необходимые данные с тэга*/
+                                        var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-click'));
+                                        var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-click'));
+
+                                        /*активируем приложенные места*/
+                                        $opportunities['function_place_activation']({
+                                            'places':$attachment_places,
+                                            'parent_additional_id':$parent_additional_id
+                                        });
+
+                                    };
+                                },
+                                /*если у места роль ожидания наведения на оболочку*/
+                                'hover': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'function_get_parent_link':null,'function_get_parent_id':null,'function_place_activation':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*запоминаем необходимые данные*/
+                                    $parent_link.setAttribute("places-attachment-by-hover", JSON.stringify($opportunities['attachment_places']));
+                                    $parent_link.setAttribute("parent-additional-id-by-hover", JSON.stringify($opportunities['parent_additional_id']));
+
+                                    /*ставим на тэг активацию мест*/
+                                    $parent_link.onmouseover = function(){
+
+                                        /*необходимые данные с тэга*/
+                                        var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-hover'));
+                                        var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-hover'));
+
+                                        /*активируем приложенные места*/
+                                        $opportunities['function_place_activation']({
+                                            'places':$attachment_places,
+                                            'parent_additional_id':$parent_additional_id
+                                        });
+
+                                    };
+                                },
+                                /*если у места роль ожидания отведения с оболочки*/
+                                'abduction': function ($opportunities = {'place_id':null,'parent_additional_id':null,'function_get_parent_link':null,'attachment_places':null,'function_get_parent_id':null,'function_place_activation':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*запоминаем необходимые данные*/
+                                    $parent_link.setAttribute("places-attachment-by-abduction", JSON.stringify($opportunities['attachment_places']));
+                                    $parent_link.setAttribute("parent-additional-id-by-abduction", JSON.stringify($opportunities['parent_additional_id']));
+
+                                    /*ставим на тэг активацию мест*/
+                                    $parent_link.onmouseout = function(){
+
+                                        /*необходимые данные с тэга*/
+                                        var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-abduction'));
+                                        var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-abduction'));
+
+                                        /*активируем приложенные места*/
+                                        $opportunities['function_place_activation']({
+                                            'places':$attachment_places,
+                                            'parent_additional_id':$parent_additional_id
+                                        });
+
+                                    };
+                                },
+                            },
+                            'Атрибут': {
+                                /*если у места роль ожидания нажатия на оболочку*/
+                                'information': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'function_get_parent_link':null,'function_get_parent_id':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*вставляем информацию в родительский тэг*/
+                                    $parent_link.innerHTML = $opportunities['place_value']['Вложение'];
+
+                                },
+                                /*если у места роль очистки оболочки*/
+                                'clear': function ($opportunities = {'place_id':null,'parent_additional_id':null,'function_get_parent_link':null,'function_get_parent_id':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*очищаем DOM родительского тэга*/
+                                    $parent_link.innerHTML = '';
+
+                                },
+                                /*если у места роль стиля оболочки*/
+                                'style': function ($opportunities = {'place_id':null,'parent_additional_id':null,'place_value':null,'function_get_parent_link':null,'function_get_parent_id':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*если стили заданы*/
+                                    if($opportunities['place_value']['Вложение'] != null){
+                                        /*ставим стили*/
+                                        Object.assign($parent_link.style,$opportunities['place_value']['Вложение']);
+                                    }
+                                },
+                                /*если у места роль атрибута тэга*/
+                                'other': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'function_get_parent_link':null,'function_get_parent_id':null}) {
+
+                                    /*получаем родительский линк*/
+                                    var $parent_link = $opportunities['function_get_parent_link']({
+                                        'child_place_id':$opportunities['place_id'],
+                                        'parent_additional_id':$opportunities['parent_additional_id'],
+                                        'function_get_parent_id':$opportunities['function_get_parent_id']
+                                    });
+
+                                    /*вставляем/изменяем новый атрибут в родительский*/
+                                    $parent_link.setAttribute($opportunities['place_value']['Роль']['Атрибут'], $opportunities['place_value']['Вложение']);
+
+                                },
+
+                            },
+                            'Запрос': {
+                                /*если запрос в реакцию*/
+                                'reaction': function ($opportunities = {'place_id':null,'function_get_import_place_values':null,'function_reaction_activation':null,'function_get_place_link':null,'function_set_place_values':null}) {
+                                    /*если у места есть связь*/
+                                    if($function_get_place_link({'place_id':$opportunities['place_id']})['Связь']){
+
+                                        var $communication_id = $opportunities['function_get_place_link']({'place_id':$opportunities['place_id']})['Связь'];
+
+                                        /*импортируемые значения с мест*/
+                                        var $opportunities_to_reaction = $opportunities['function_get_import_place_values']({
+                                            'communication_id':$communication_id,
+                                            'function_get_place_link':$opportunities['function_get_place_link']
+                                        });
+
+                                        /*активируем реакцию*/
+                                        $opportunities['function_reaction_activation']({
+                                            'communication_id':$communication_id,
+                                            'opportunities_in':$opportunities_to_reaction,
+                                            'function_get_place_link':$opportunities['function_get_place_link'],
+                                            'function_set_place_values':$opportunities['function_set_place_values']
+                                        });
+
+                                    }
+
+                                },
+                            },
+                            'Запросы': {
+                                /*если запросы в реакцию*/
+                                'reaction': function ($opportunities = {'place_id':null,'attachment_places':null,'parent_additional_id':null,'function_get_import_place_values':null,'function_reaction_activation':null,'function_get_place_link':null,'function_set_place_values':null}) {
+
+                                    /*если у места есть связь*/
+                                    if($opportunities['function_get_place_link']({'place_id':$opportunities['place_id']})['Связь']) {
+
+                                        var $communication_id = $opportunities['function_get_place_link']({'place_id': $opportunities['place_id']})['Связь'];
+
+                                        /*импортируемые значения с мест*/
+                                        var $opportunities_to_reaction = $opportunities['function_get_import_place_values']({
+                                            'communication_id': $communication_id,
+                                            'function_get_place_link': $opportunities['function_get_place_link']
+                                        });
+
+                                        for(var $key in $opportunities_to_reaction['array']) {
+
+                                            /*берём одну запись из массива*/
+                                            var $opportunities_in = $opportunities_to_reaction['array'][$key];
+
+                                            /*активируем реакцию*/
+                                            $opportunities['function_reaction_activation']({
+                                                'communication_id':$communication_id,
+                                                'opportunities_in':$opportunities_in,
+                                                'function_get_place_link':$opportunities['function_get_place_link'],
+                                                'function_set_place_values':$opportunities['function_set_place_values']
+                                            });
+
+                                            /*активируем приложенные места*/
+                                            $opportunities['function_place_activation']({
+                                                'places':$opportunities['attachment_places'],
+                                                'parent_additional_id':$opportunities['parent_additional_id'] + '-' + $key
+                                            });
+
+                                        }
+
+                                    }
+                                },
+                            },
+                        };
+
                         /*если есть места у рефлекса*/
                         if($places){
                             /*обходим все места рефлекса*/
-                            for(var $place_key in $places) {
-                                var $place_id = $places[$place_key];
-                                /*исключаем зацикленность*/
-                                if($place_id=='1.1' && $function_place_link({'place_id':'1.1.1'})['Вложение'] == 1){
-                                    continue;
-                                }
+                            for(var $key in $places) {
+
+                                var $place_id = $places[$key];
+
                                 /*если есть приложенные места*/
                                 if(typeof $place_id === "object"){
-                                    var $keys = Object.keys($place_id);
-                                    var $first_key = $keys[0];
-                                    /*массив мест для многопоточности*/
-                                    var $places_attachment = $place_id[$first_key];
-                                    $place_id = $first_key;
+                                    var $place_id_with_attachment = $place_id;
+                                    /*вычисляем идентификатор места*/
+                                    var $keys = Object.keys($place_id_with_attachment);
+                                    $place_id = $keys[0];
+                                    var $attachment_places = $place_id_with_attachment[$place_id];
                                 }
                                 else{
-                                    var $places_attachment = false;
+                                    var $attachment_places = false;
                                 }
-                                /*значения места*/
-                                var $place_value = $function_place_link({'place_id':$place_id});
-                                /*если у места роль категории*/
-                                if(typeof($place_value['Роль']['Категория']) != "undefined"){
-                                    /*если у места капсулирование всего*/
-                                    if($place_value['Роль']['Категория']=='note'){
-                                        continue;
-                                    }
-                                    /*если у места роль html тэга*/
-                                    else{
-                                        /*создаём новый тэг*/
-                                        var new_tag = document.createElement($place_value['Роль']['Категория']);
-                                        new_tag.setAttribute("id", $place_id + $stream_id);
-                                        /*получаем id родительского тэга*/
-                                        var $parent_tag_id = $function_parent_tag_id_by_id({'child_place_id':$place_id});
-                                        /*вставляем новый тэг в родительский*/
-                                        if(document.getElementById($parent_tag_id + $stream_id)){
-                                            document.getElementById($parent_tag_id + $stream_id).appendChild(new_tag);
-                                        }
-                                        else{
-                                            document.getElementById($parent_tag_id).appendChild(new_tag);
-                                        }
-                                    }
-                                }
-                                /*если у места роль ожидания*/
-                                else if(typeof($place_value['Роль']['Ожидание']) != "undefined"){
-                                    /*получаем id родительского тэга*/
-                                    var $parent_tag_id = $function_parent_tag_id_by_id({'child_place_id':$place_id});
-                                    /*создаём ссылку на DOM родительского тэга*/
-                                    if(document.getElementById($parent_tag_id + $stream_id)){
-                                        var $parent_tag = document.getElementById($parent_tag_id + $stream_id);
-                                    }
-                                    else{
-                                        var $parent_tag = document.getElementById($parent_tag_id);
-                                    }
-                                    /*если у места роль ожидания нажатия на оболочку*/
-                                    if($place_value['Роль']['Ожидание'] == 'click'){
-                                        /*запоминаем необходимые данные*/
-                                        $parent_tag.setAttribute("places-attachment-by-click", JSON.stringify($places_attachment));
-                                        /*ставим на тэг активацию мест*/
-                                        $parent_tag.onclick = function(){
-                                            /*необходимые данные с тэга*/
-                                            var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-click'));
-                                            /*активируем приложенные места*/
-                                            $function_place_activation({
-                                                'places':$places_attachment,
-                                                'stream_id':''
-                                            });
-                                        };
-                                    }
-                                    /*если у места роль ожидания наведения на оболочку*/
-                                    else if($place_value['Роль']['Ожидание'] == 'hover'){
-                                        /*запоминаем необходимые данные*/
-                                        $parent_tag.setAttribute("places-attachment-by-hover", JSON.stringify($places_attachment));
-                                        /*ставим на тэг активацию мест*/
-                                        $parent_tag.onmouseover = function(){
-                                            /*необходимые данные с тэга*/
-                                            var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-hover'));
-                                            /*активируем приложенные места*/
-                                            $function_place_activation({
-                                                'places':$places_attachment,
-                                                'stream_id':''
-                                            });
-                                        };
-                                    }
-                                    /*если у места роль ожидания отведения с оболочки*/
-                                    else if($place_value['Роль']['Ожидание'] == 'abduction'){
-                                        /*запоминаем необходимые данные*/
-                                        $parent_tag.setAttribute("places-attachment-by-abduction", JSON.stringify($places_attachment));
-                                        /*ставим на тэг активацию мест*/
-                                        $parent_tag.onmouseout = function(){
-                                            /*необходимые данные с тэга*/
-                                            var $places_attachment = JSON.parse(this.getAttribute('places-attachment-by-abduction'));
-                                            /*активируем приложенные места*/
-                                            $function_place_activation({
-                                                'places':$places_attachment,
-                                                'stream_id':''
-                                            });
-                                        };
-                                    }
-                                }
-                                /*если у места роль атрибута*/
-                                else if(typeof($place_value['Роль']['Атрибут']) != "undefined"){
-                                    /*получаем id родительского тэга*/
-                                    var $parent_tag_id = $function_parent_tag_id_by_id({'child_place_id':$place_id});
-                                    /*создаём ссылку на DOM родительского тэга*/
-                                    if(document.getElementById($parent_tag_id + $stream_id)){
-                                        var $parent_tag = document.getElementById($parent_tag_id + $stream_id);
-                                    }
-                                    else{
-                                        var $parent_tag = document.getElementById($parent_tag_id);
-                                    }
-                                    /*если у места роль текста оболочки*/
-                                    if($place_value['Роль']['Атрибут'] == 'information'){
-                                        /*вставляем информацию в родительский*/
-                                        $parent_tag.innerHTML = $place_value['Вложение'];
-                                    }
-                                    /*если у места роль очистки оболочки*/
-                                    else if($place_value['Роль']['Атрибут'] == 'clear'){
-                                        /*очищаем родительский тэг*/
-                                        $parent_tag.innerHTML = '';
-                                    }
-                                    /*если у места роль стиля оболочки*/
-                                    else if($place_value['Роль']['Атрибут'] == 'style'){
-                                        /*если стили заданы*/
-                                        if($place_value['Вложение'] != null){
-                                            /*ставим стили*/
-                                            Object.assign($parent_tag.style,$place_value['Вложение']);
-                                        }
-                                    }
-                                    /*если у места роль атрибута оболочки*/
-                                    else{
-                                        /*вставляем/изменяем новый атрибут в родительский*/
-                                        $parent_tag.setAttribute($place_value['Роль']['Атрибут'], $place_value['Вложение']);
-                                    }
-                                }
-                                /*если у места роль запроса*/
-                                else if(typeof($place_value['Роль']['Запрос']) != "undefined" || typeof($place_value['Роль']['Запросы']) != "undefined"){
-                                    /*если у места есть связь*/
-                                    if($function_place_link({'place_id':$place_id})['Связь']){
-                                        var $communication_id = $function_place_link({'place_id':$place_id})['Связь'];
-                                        /*получаем значения с мест*/
-                                        var $opportunities = [];
-                                        if($GLOBALS['Связи'][$communication_id]['Возможности'] != null){
-                                            for(var $key in $GLOBALS['Связи'][$communication_id]['Возможности']) {
-                                                /*если у места роль многопоточность*/
-                                                if(typeof($place_value['Роль']['Запросы']) != "undefined"){
-                                                    var $place_id_in = $key;
-                                                    var $place_id_request = $GLOBALS['Связи'][$communication_id]['Возможности'][$key];
-                                                    $opportunities[$place_id_request] = $function_place_link({'place_id':$place_id_in})['Вложение'];
-                                                }
-                                                else{
-                                                    var $place_id_in = $GLOBALS['Связи'][$communication_id]['Возможности'][$key];
-                                                    $opportunities[$place_id_in] = $function_place_link({'place_id':$place_id_in})['Вложение'];
-                                                }
-                                            }
-                                        }
 
-                                        /*если запрос в реакцию*/
-                                        if((typeof($place_value['Роль']['Запрос']) != "undefined" && $place_value['Роль']['Запрос']=='reaction') || (typeof($place_value['Роль']['Запросы']) != "undefined" && $place_value['Роль']['Запросы']=='reaction')){
-                                            /*если у места роль многопоточность*/
-                                            if(typeof($place_value['Роль']['Запросы']) != "undefined"){
-                                                for(var $key in $opportunities['array']) {
-                                                    var $opportunity = $opportunities['array'][$key];
-                                                    /*активируем реакцию*/
-                                                    $function_reaction_activation({
-                                                        'communication_id':$communication_id,
-                                                        'opportunities_in':$opportunity,
-                                                        'function_place_link':$function_place_link,
-                                                        'function_place_set_values':$function_place_set_values
-                                                    });
-                                                    /*активируем приложенные места*/
-                                                    $function_place_activation({
-                                                        'places':$places_attachment,
-                                                        'stream_id':$stream_id + '-' + $key
-                                                    });
-                                                }
-                                            }
-                                            else{
-                                                /*активируем реакцию*/
-                                                $function_reaction_activation({
-                                                    'communication_id':$communication_id,
-                                                    'opportunities_in':$opportunities,
-                                                    'function_place_link':$function_place_link,
-                                                    'function_place_set_values':$function_place_set_values
-                                                });
-                                            }
-                                        }
-                                    }
+                                /*исключаем зацикленность*/
+                                if($place_id=='1.1' && $function_get_place_link({'place_id':'1.1.1'})['Вложение'] == 1){
+                                    continue;
                                 }
+
+                                /*значения места*/
+                                var $place_value = $function_get_place_link({
+                                    'place_id':$place_id
+                                });
+
+                                /*вычисляем идентификатор роли*/
+                                var $keys = Object.keys($place_value['Роль']);
+                                var $role_id = $keys[0];
+                                var $role_additional_id = $place_value['Роль'][$role_id];
+
+                                /*отмечаем многовариантность подкатегории*/
+                                if(typeof($function_activation_roles[$role_id][$role_additional_id]) == "undefined"){
+                                    $role_additional_id = 'other';
+                                }
+
+                                /*активируем роль*/
+                                $function_activation_roles[$role_id][$role_additional_id]({
+                                    'place_id':$place_id,
+                                    'place_value':$place_value,
+                                    'attachment_places':$attachment_places,
+                                    'parent_additional_id':$opportunities['parent_additional_id'],
+                                    'function_get_parent_id':$function_get_parent_id,
+                                    'function_get_import_place_values':$function_get_import_place_values,
+                                    'function_reaction_activation':$function_reaction_activation,
+                                    'function_get_place_link':$function_get_place_link,
+                                    'function_get_parent_link':$function_get_parent_link,
+                                    'function_set_place_values':$function_set_place_values,
+                                    'function_place_activation':$opportunities['function_place_activation']
+                                });
+
                             }
                         }
                     };
 
                     /*получаем значения запрашиваемого рефлекса*/
-                    var $reflex_value = $function_reflex_value({'reflex_id':$opportunities['1.1.1']});
+                    var $reflex_value = $function_reflex_value({'reflex_id':$opportunities['reflex_id']});
 
                     if(eval($reflex_value['Права'])){
 
                         /*активируем места*/
                         $function_place_activation({
                             'places':$reflex_value['Места'],
-                            'stream_id':''
+                            'parent_additional_id':'',
+                            'function_place_activation':$function_place_activation,
                         });
 
                     }
@@ -1313,9 +1451,9 @@
 
                     /*результат*/
                     return {
-                        '1.2.1.2.3.2.2.4.2.4.1.2.1.3':$opportunities['name'],
-                        '1.2.1.2.3.2.2.4.2.4.1.2.1.2':$opportunities['url'],
-                        '1.2.1.2.3.2.2.4.2.4.1.3.2':$opportunities['date']
+                        'name':$opportunities['name'],
+                        'url':$opportunities['url'],
+                        'date':$opportunities['date']
                     };
                 }
             },
@@ -1324,7 +1462,7 @@
 
                     /*результат*/
                     return {
-                        '1.1.1': '1.1'
+                        'reflex_id': '1.1'
                     };
                 }
             },
@@ -1333,7 +1471,7 @@
 
                     /*результат*/
                     return {
-                        '1.1.1': '1.1.1'
+                        'reflex_id': '1.1.1'
                     };
                 }
             },
@@ -1342,7 +1480,7 @@
 
                     /*результат*/
                     return {
-                        '1.1.1': '1.1.2'
+                        'reflex_id': '1.1.2'
                     };
                 }
             },
@@ -1351,7 +1489,7 @@
 
                     /*результат*/
                     return {
-                        '1.1.1': '1.1.3'
+                        'reflex_id': '1.1.3'
                     };
                 }
             },
@@ -1360,7 +1498,7 @@
 
                     /*результат*/
                     return {
-                        '1.1.1': '1.1.4'
+                        'reflex_id': '1.1.4'
                     };
                 }
             },
@@ -1369,7 +1507,7 @@
 
                     /*результат*/
                     return {
-                        '1.1.1': '1.1.5'
+                        'reflex_id': '1.1.5'
                     };
                 }
             },
@@ -1382,7 +1520,7 @@
 
                     /*результат*/
                     return {
-                        '1.2.1.1.4.2':'./Дизайн/favicon' + rand + '.png'
+                        'url':'./Дизайн/favicon' + rand + '.png'
                     };
                 }
             },
@@ -1390,7 +1528,7 @@
 
         /*активируем интерфейс*/
         document.addEventListener('DOMContentLoaded', function() {
-            $GLOBALS['Реакции'][1]['Способность']({'1.1.1':'1'});
+            $GLOBALS['Реакции'][1]['Способность']({'reflex_id':'1'});
         });
 
     </script>
