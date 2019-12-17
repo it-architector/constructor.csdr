@@ -542,7 +542,7 @@
                                                                                     },
                                                                                     '1.2.1.2.3.2.2.4.2.4': {
                                                                                         'Смысл': 'Показ новостей',
-                                                                                        'Роль': {'Запросы':'reaction'},
+                                                                                        'Роль': {'Запрос':'distribution'},
                                                                                         'Связь': '2',
                                                                                         'Вложение': {
                                                                                             '1.2.1.2.3.2.2.4.2.4.1': {
@@ -851,7 +851,7 @@
                         'date':'01.12.2019'
                     }
                 },
-                'Реакция': '2'
+                'Реакция': false
             },
             '3': {
                 'Тип': 'Локальное',
@@ -920,7 +920,7 @@
                 'Образец приобретения': {
                     'url':'./Дизайн/favicon1.png'
                 },
-                'Реакция': '9'
+                'Реакция': '2'
             },
         };
 
@@ -1045,20 +1045,6 @@
 
                         };
 
-                        /*алгоритм получения импортируемых значений мест*/
-                        var $function_get_import_place_values = function($opportunities = {'communication_id':null,'function_get_place_link':null}){
-                            $communication_id = $opportunities['communication_id'];
-                            /*получаем значения с мест*/
-                            var $place_values = [];
-                            if($GLOBALS['Связи'][$communication_id]['Возможности'] != null){
-                                for(var $place_id in $GLOBALS['Связи'][$communication_id]['Возможности']) {
-                                    var $place_code = $GLOBALS['Связи'][$communication_id]['Возможности'][$place_id];
-                                    $place_values[$place_code] = $opportunities['function_get_place_link']({'place_id':$place_id})['Вложение'];
-                                }
-                            }
-                            return $place_values;
-                        };
-
                         /*алгоритм получения родительского линка по id ребёнка*/
                         var $function_get_parent_link = function($opportunities = {'child_place_id':null,'parent_additional_id':null,'function_get_parent_id':null}){
                             /*получаем id родительского тэга*/
@@ -1073,56 +1059,30 @@
                             return $parent_link;
                         };
 
-                        /*алгоритм установки значений по местам*/
-                        var $function_set_place_values = function($opportunities = {'function_get_place_link':null,'results':null}){
-
-                            var $function_get_place_link = $opportunities['function_get_place_link'];
-                            var $results = $opportunities['results'];
-
-                            /*сохраняем результат по местам*/
-                            for(var $place_id_in in $results) {
-                                var $place_data = $results[$place_id_in];
-                                /*создаём ссылку на место*/
-                                var $place_link = $function_get_place_link({'place_id':$place_id_in});
-                                /*сохраняем значение*/
-                                $place_link['Вложение'] = $place_data;
+                        /*алгоритм получения значений c мест*/
+                        var $function_get_place_values = function($opportunities = {'communication_id':null,'function_get_place_link':null}){
+                            $communication_id = $opportunities['communication_id'];
+                            /*получаем значения с мест*/
+                            var $place_values = [];
+                            if($GLOBALS['Связи'][$communication_id]['Возможности'] != null){
+                                for(var $place_id in $GLOBALS['Связи'][$communication_id]['Возможности']) {
+                                    var $place_code = $GLOBALS['Связи'][$communication_id]['Возможности'][$place_id];
+                                    $place_values[$place_code] = $opportunities['function_get_place_link']({'place_id':$place_id})['Вложение'];
+                                }
                             }
+                            return $place_values;
                         };
 
-                        /*алгоритм активации реакций*/
-                        var $function_reaction_activation = function($opportunities = {'communication_id':null,'opportunities_in':null,'function_get_place_link':null,'function_set_place_values':null}){
+                        /*алгоритм установки значений по местам*/
+                        var $function_set_place_values = function($opportunities = {'function_get_place_link':null,'place_values':null}){
 
-                            var $function_get_place_link = $opportunities['function_get_place_link'];
-                            var $function_set_place_values = $opportunities['function_set_place_values'];
-                            var $communication_id = $opportunities['communication_id'];
-                            var $opportunities_in = $opportunities['opportunities_in'];
-
-                            /*если есть реакции у связи*/
-                            if($GLOBALS['Связи'][$communication_id]['Реакция']){
-                                var $reaction_id = $GLOBALS['Связи'][$communication_id]['Реакция'];
-
-                                /*выполняем реакцию у связи*/
-                                var $results = $GLOBALS['Реакции'][$reaction_id]['Способность']($opportunities_in);
-
-                                /*если есть что сохранять по местам*/
-                                if($GLOBALS['Связи'][$communication_id]['Приобретение'] != null){
-                                    var $place_values = [];
-                                    for(var $place_code in $GLOBALS['Связи'][$communication_id]['Приобретение']) {
-                                        var $place_id = $GLOBALS['Связи'][$communication_id]['Приобретение'][$place_code];
-                                        /*берём значение из результата*/
-                                        if(typeof($results[$place_code]) != "undefined"){
-                                            $place_values[$place_id] = $results[$place_code];
-                                        }
-                                        else{
-                                            $place_values[$place_id] = null;
-                                        }
-                                    }
-                                    /*сохраняем значения*/
-                                    $function_set_place_values({
-                                        'function_get_place_link':$function_get_place_link,
-                                        'results':$place_values
-                                    });
-                                }
+                            /*сохраняем результат по местам*/
+                            for(var $place_id_in in $opportunities['place_values']) {
+                                var $place_value = $opportunities['place_values'][$place_id_in];
+                                /*создаём ссылку на место*/
+                                var $place_link = $opportunities['function_get_place_link']({'place_id':$place_id_in});
+                                /*сохраняем значение*/
+                                $place_link['Вложение'] = $place_value;
                             }
                         };
 
@@ -1304,56 +1264,101 @@
                             },
                             'Запрос': {
                                 /*если запрос в реакцию*/
-                                'reaction': function ($opportunities = {'place_id':null,'function_get_import_place_values':null,'function_reaction_activation':null,'function_get_place_link':null,'function_set_place_values':null}) {
-                                    /*если у места есть связь*/
-                                    if($function_get_place_link({'place_id':$opportunities['place_id']})['Связь']){
+                                'reaction': function ($opportunities = {'place_value':null,'function_get_place_values':null,'function_get_place_link':null,'function_set_place_values':null}) {
 
-                                        var $communication_id = $opportunities['function_get_place_link']({'place_id':$opportunities['place_id']})['Связь'];
+                                    /*если у места есть связь*/
+                                    if($opportunities['place_value']['Связь']){
+
+                                        var $communication_id = $opportunities['place_value']['Связь'];
 
                                         /*импортируемые значения с мест*/
-                                        var $opportunities_to_reaction = $opportunities['function_get_import_place_values']({
+                                        var $place_values_to_reaction = $opportunities['function_get_place_values']({
                                             'communication_id':$communication_id,
                                             'function_get_place_link':$opportunities['function_get_place_link']
                                         });
 
-                                        /*активируем реакцию*/
-                                        $opportunities['function_reaction_activation']({
-                                            'communication_id':$communication_id,
-                                            'opportunities_in':$opportunities_to_reaction,
-                                            'function_get_place_link':$opportunities['function_get_place_link'],
-                                            'function_set_place_values':$opportunities['function_set_place_values']
-                                        });
+                                        /*если есть реакции у связи*/
+                                        if($GLOBALS['Связи'][$communication_id]['Реакция']){
+
+                                            var $reaction_id = $GLOBALS['Связи'][$communication_id]['Реакция'];
+
+                                            /*активируем реакцию*/
+                                            var $results = $GLOBALS['Реакции'][$reaction_id]['Способность']($place_values_to_reaction);
+
+                                            /*если есть что сохранять по местам*/
+                                            if($GLOBALS['Связи'][$communication_id]['Приобретение'] != null){
+
+                                                var $place_values_from_reaction = [];
+
+                                                /*соотносим полученными от реакции переменные с назначенными переменными в связи*/
+                                                for(var $place_code in $GLOBALS['Связи'][$communication_id]['Приобретение']) {
+
+                                                    var $place_id = $GLOBALS['Связи'][$communication_id]['Приобретение'][$place_code];
+
+                                                    /*берём значение из результата*/
+                                                    if(typeof($results[$place_code]) != "undefined"){
+                                                        $place_values_from_reaction[$place_id] = $results[$place_code];
+                                                    }
+                                                    else{
+                                                        $place_values_from_reaction[$place_id] = null;
+                                                    }
+
+                                                }
+
+                                                /*сохраняем значения*/
+                                                $opportunities['function_set_place_values']({
+                                                    'function_get_place_link':$opportunities['function_get_place_link'],
+                                                    'place_values':$place_values_from_reaction
+                                                });
+
+                                            }
+                                        }
 
                                     }
 
                                 },
-                            },
-                            'Запросы': {
-                                /*если запросы в реакцию*/
-                                'reaction': function ($opportunities = {'place_id':null,'attachment_places':null,'parent_additional_id':null,'function_get_import_place_values':null,'function_reaction_activation':null,'function_get_place_link':null,'function_set_place_values':null}) {
+                                /*распределение переменных с массива*/
+                                'distribution': function ($opportunities = {'place_value':null,'attachment_places':null,'parent_additional_id':null,'function_place_activation':null,'function_get_place_values':null,'function_get_place_link':null,'function_set_place_values':null}) {
 
                                     /*если у места есть связь*/
-                                    if($opportunities['function_get_place_link']({'place_id':$opportunities['place_id']})['Связь']) {
+                                    if($opportunities['place_value']['Связь']) {
 
-                                        var $communication_id = $opportunities['function_get_place_link']({'place_id': $opportunities['place_id']})['Связь'];
+                                        var $communication_id = $opportunities['place_value']['Связь'];
 
                                         /*импортируемые значения с мест*/
-                                        var $opportunities_to_reaction = $opportunities['function_get_import_place_values']({
+                                        var $place_values_distribution_array = $opportunities['function_get_place_values']({
                                             'communication_id': $communication_id,
                                             'function_get_place_link': $opportunities['function_get_place_link']
-                                        });
+                                        })['array'];
 
-                                        for(var $key in $opportunities_to_reaction['array']) {
+                                        for(var $key in $place_values_distribution_array) {
 
                                             /*берём одну запись из массива*/
-                                            var $opportunities_in = $opportunities_to_reaction['array'][$key];
+                                            var $place_values_distribution = $place_values_distribution_array[$key];
 
-                                            /*активируем реакцию*/
-                                            $opportunities['function_reaction_activation']({
-                                                'communication_id':$communication_id,
-                                                'opportunities_in':$opportunities_in,
-                                                'function_get_place_link':$opportunities['function_get_place_link'],
-                                                'function_set_place_values':$opportunities['function_set_place_values']
+                                            /*распределяем значения*/
+                                            var $place_values_from_distribution = [];
+
+                                            /*назначенные переменными в связи*/
+                                            for(var $place_code in $GLOBALS['Связи'][$communication_id]['Приобретение']) {
+
+                                                $place_id = $GLOBALS['Связи'][$communication_id]['Приобретение'][$place_code];
+
+                                                /*если есть значение в импорте*/
+                                                if(typeof($place_values_distribution[$place_code]) != "undefined"){
+                                                    $place_values_from_distribution[$place_id] = $place_values_distribution[$place_code];
+                                                }
+                                                /*в результате реакции нет значения*/
+                                                else{
+                                                    $place_values_from_distribution[$place_id] = null;
+                                                }
+
+                                            }
+
+                                            /*сохраняем значения распределения*/
+                                            $opportunities['function_set_place_values']({
+                                                'function_get_place_link': $opportunities['function_get_place_link'],
+                                                'place_values': $place_values_from_distribution
                                             });
 
                                             /*активируем приложенные места*/
@@ -1415,8 +1420,7 @@
                                     'attachment_places':$attachment_places,
                                     'parent_additional_id':$opportunities['parent_additional_id'],
                                     'function_get_parent_id':$function_get_parent_id,
-                                    'function_get_import_place_values':$function_get_import_place_values,
-                                    'function_reaction_activation':$function_reaction_activation,
+                                    'function_get_place_values':$function_get_place_values,
                                     'function_get_place_link':$function_get_place_link,
                                     'function_get_parent_link':$function_get_parent_link,
                                     'function_set_place_values':$function_set_place_values,
@@ -1449,11 +1453,13 @@
             '2': {
                 'Способность'  : function($opportunities = []){
 
+                    var min = 1;
+                    var max = 4;
+                    var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+
                     /*результат*/
                     return {
-                        'name':$opportunities['name'],
-                        'url':$opportunities['url'],
-                        'date':$opportunities['date']
+                        'url':'./Дизайн/favicon' + rand + '.png'
                     };
                 }
             },
@@ -1508,19 +1514,6 @@
                     /*результат*/
                     return {
                         'reflex_id': '1.1.5'
-                    };
-                }
-            },
-            '9': {
-                'Способность'  : function($opportunities = []){
-
-                    var min = 1;
-                    var max = 4;
-                    var rand = Math.floor(Math.random() * (max - min + 1)) + min;
-
-                    /*результат*/
-                    return {
-                        'url':'./Дизайн/favicon' + rand + '.png'
                     };
                 }
             },
