@@ -79,12 +79,11 @@
                                     'place_1.2.1.2.3.2.3.2', 'place_1.2.1.2.3.2.3.2.1', 'place_1.2.1.2.3.2.3.2.2',
                                     'place_1.2.1.2.3.2.3.2.2.1', 'place_1.2.1.2.3.2.3.2.3', 'place_1.2.1.2.3.2.3.2.3.1',
                                     'place_1.2.1.2.3.2.3.2.3.2', 'place_1.2.1.2.3.2.3.2.4', 'place_1.2.1.2.3.2.3.2.4.1',
-                                    'place_1.2.1.2.3.2.3.3', 'place_1.2.1.2.3.2.3.3.1', 'place_1.2.1.2.3.2.3.3.2',
-                                    'place_1.2.1.2.3.2.3.3.2.1', 'place_1.2.1.2.3.2.3.3.2.2', 'place_1.2.1.2.3.2.3.3.2.3',
-                                    'place_1.2.1.2.3.2.3.3.3', 'place_1.2.1.2.3.2.3.3.3.1', 'place_1.2.1.2.3.2.3.3.3.2',
-                                    'place_1.2.1.2.3.2.3.3.3.3', 'place_1.2.1.2.3.2.3.3.3.4',
-                                    'place_1.2.1.2.3.2.3.3.4', 'place_1.2.1.2.3.2.3.3.4.1', 'place_1.2.1.2.3.2.3.3.4.2',
-                                    'place_1.2.1.2.3.2.3.3.4.3', 'place_1.2.1.2.3.2.3.3.4.4',
+                                    'place_1.2.1.2.3.2.3.3', 'place_1.2.1.2.3.2.3.3.1',
+                                    {'place_1.2.1.2.3.2.3.3.3':[
+                                        'place_1.2.1.2.3.2.3.3.3.1.7', 'place_1.2.1.2.3.2.3.3.3.1', 'place_1.2.1.2.3.2.3.3.3.1.1',
+                                        'place_1.2.1.2.3.2.3.3.3.1.2', 'place_1.2.1.2.3.2.3.3.3.1.3', 'place_1.2.1.2.3.2.3.3.3.1.4'
+                                    ]}
                                 ],
                                 'Права': 'true',
                                 'Вложение': false
@@ -109,7 +108,7 @@
         };
 
         /*2 компонент проекта*/
-        $GLOBALS['Сценарий']    = {
+        $GLOBALS['Места']    = {
             '1': {
                 'Смысл': 'Память интерфейса',
                 'Роль': {'Инкапсуляция': 'all'},
@@ -770,106 +769,75 @@
                                                                                 }
                                                                             },
                                                                             '1.2.1.2.3.2.3.3.2': {
-                                                                                'Смысл': 'Емейл',
-                                                                                'Роль': {'Инкапсуляция':'a'},
+                                                                                'Смысл': 'Массив контактов',
+                                                                                'Роль': {'Атрибут':'information'},
                                                                                 'Связь': false,
-                                                                                'Вложение': {
-                                                                                    '1.2.1.2.3.2.3.3.2.1': {
-                                                                                        'Смысл': 'Стиль',
-                                                                                        'Роль': {'Атрибут':'style'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': {
-                                                                                            'float':'right',
-                                                                                            'background':'url(./Дизайн/email.png) no-repeat 0 0',
-                                                                                            'height':'24px',
-                                                                                            'width':'25px'
-                                                                                        }
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.2.2': {
-                                                                                        'Смысл': 'Ссылка',
-                                                                                        'Роль': {'Атрибут':'href'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': 'm' + 'a' + 'i' + 'l' + 't' + 'o' + ':' + 'i' + 't' + '@' + 'framework-csdr.ru'
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.2.3': {
-                                                                                        'Смысл': 'Подсказка',
-                                                                                        'Роль': {'Атрибут':'title'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': 'Написать письмо создателю'
-                                                                                    },
-                                                                                }
+                                                                                'Вложение': [
+                                                                                    {'image':'./Дизайн/email.png','text':'Email создателя','url':'m' + 'a' + 'i' + 'l' + 't' + 'o' + ':' + 'i' + 't' + '@' + 'framework-csdr.ru'},
+                                                                                    {'image':'./Дизайн/phpstorm.png','text':'Код написан на JetBrains PhpStorm\'e','url':'https://www.jetbrains.com/?from=framework+csdr'},
+                                                                                    {'image':'./Дизайн/marilight.png','text':'Душа проекта marilight','url':'https://vk.com/marilighta'},
+                                                                                    {'image':'./Дизайн/github.png','text':'Исходник на github.com','url':'https://github.com/it-architector/framework.csdr'},
+                                                                                ]
                                                                             },
                                                                             '1.2.1.2.3.2.3.3.3': {
-                                                                                'Смысл': 'PhpStorm',
-                                                                                'Роль': {'Инкапсуляция':'a'},
-                                                                                'Связь': false,
+                                                                                'Смысл': 'Цикл',
+                                                                                'Роль': {'Запрос':'distribution'},
+                                                                                'Связь': '4',
                                                                                 'Вложение': {
                                                                                     '1.2.1.2.3.2.3.3.3.1': {
-                                                                                        'Смысл': 'Стиль',
-                                                                                        'Роль': {'Атрибут':'style'},
+                                                                                        'Смысл': 'Ссылка',
+                                                                                        'Роль': {'Инкапсуляция':'a'},
                                                                                         'Связь': false,
                                                                                         'Вложение': {
-                                                                                            'float':'right',
-                                                                                            'padding-left':'5px',
-                                                                                            'background':'url(./Дизайн/phpstorm.png) no-repeat 0 0',
-                                                                                            'height':'24px',
-                                                                                            'width':'24px'
+                                                                                            '1.2.1.2.3.2.3.3.3.1.1': {
+                                                                                                'Смысл': 'Стиль',
+                                                                                                'Роль': {'Атрибут':'style'},
+                                                                                                'Связь': false,
+                                                                                                'Вложение': null
+                                                                                            },
+                                                                                            '1.2.1.2.3.2.3.3.3.1.2': {
+                                                                                                'Смысл': 'Ссылка',
+                                                                                                'Роль': {'Атрибут':'href'},
+                                                                                                'Связь': false,
+                                                                                                'Вложение': null
+                                                                                            },
+                                                                                            '1.2.1.2.3.2.3.3.3.1.3': {
+                                                                                                'Смысл': 'Подсказка',
+                                                                                                'Роль': {'Атрибут':'title'},
+                                                                                                'Связь': false,
+                                                                                                'Вложение': null
+                                                                                            },
+                                                                                            '1.2.1.2.3.2.3.3.3.1.4': {
+                                                                                                'Смысл': 'Новая страница',
+                                                                                                'Роль': {'Атрибут':'target'},
+                                                                                                'Связь': false,
+                                                                                                'Вложение': '_blank'
+                                                                                            },
+                                                                                            '1.2.1.2.3.2.3.3.3.1.5': {
+                                                                                                'Смысл': 'Ссылка на картинку',
+                                                                                                'Роль': {'Атрибут':'information'},
+                                                                                                'Связь': false,
+                                                                                                'Вложение': null
+                                                                                            },
+                                                                                            '1.2.1.2.3.2.3.3.3.1.6': {
+                                                                                                'Смысл': 'Шаблон стиля',
+                                                                                                'Роль': {'Атрибут':'information'},
+                                                                                                'Связь': false,
+                                                                                                'Вложение': {
+                                                                                                    'float':'right',
+                                                                                                    'padding-left':'5px',
+                                                                                                    'background':'url({IMAGE_URL}) no-repeat 0 0',
+                                                                                                    'height':'24px',
+                                                                                                    'width':'24px'
+                                                                                                }
+                                                                                            },
+                                                                                            '1.2.1.2.3.2.3.3.3.1.7': {
+                                                                                                'Смысл': 'Введение стиля',
+                                                                                                'Роль': {'Запрос':'reaction'},
+                                                                                                'Связь': '5',
+                                                                                                'Вложение': false
+                                                                                            },
                                                                                         }
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.3.2': {
-                                                                                        'Смысл': 'Ссылка',
-                                                                                        'Роль': {'Атрибут':'href'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': 'https://www.jetbrains.com/?from=framework+csdr'
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.3.3': {
-                                                                                        'Смысл': 'Подсказка',
-                                                                                        'Роль': {'Атрибут':'title'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': 'Проект поддерживал JetBrains PhpStorm'
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.3.4': {
-                                                                                        'Смысл': 'Новая страница',
-                                                                                        'Роль': {'Атрибут':'target'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': '_blank'
-                                                                                    },
-                                                                                }
-                                                                            },
-                                                                            '1.2.1.2.3.2.3.3.4': {
-                                                                                'Смысл': 'github.com',
-                                                                                'Роль': {'Инкапсуляция':'a'},
-                                                                                'Связь': false,
-                                                                                'Вложение': {
-                                                                                    '1.2.1.2.3.2.3.3.4.1': {
-                                                                                        'Смысл': 'Стиль',
-                                                                                        'Роль': {'Атрибут':'style'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': {
-                                                                                            'float':'right',
-                                                                                            'padding-left':'5px',
-                                                                                            'background':'url(./Дизайн/github.png) no-repeat 0 0',
-                                                                                            'height':'24px',
-                                                                                            'width':'24px'
-                                                                                        }
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.4.2': {
-                                                                                        'Смысл': 'Ссылка',
-                                                                                        'Роль': {'Атрибут':'href'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': 'https://github.com/it-architector/framework.csdr'
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.4.3': {
-                                                                                        'Смысл': 'Подсказка',
-                                                                                        'Роль': {'Атрибут':'title'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': 'Исходник на github.com'
-                                                                                    },
-                                                                                    '1.2.1.2.3.2.3.3.4.4': {
-                                                                                        'Смысл': 'Новая страница',
-                                                                                        'Роль': {'Атрибут':'target'},
-                                                                                        'Связь': false,
-                                                                                        'Вложение': '_blank'
                                                                                     },
                                                                                 }
                                                                             },
@@ -894,6 +862,7 @@
         /*3 компонент проекта*/
         $GLOBALS['Связи']    = {
             '1': {
+                'Тип': 'Глобальное',
                 'Возможности': {'1.1.1':'reflex_id'},
                 'Приобретение': null,
                 'Образец возможностей': {
@@ -903,6 +872,7 @@
                 'Реакция': '1'
             },
             '2': {
+                'Тип': 'Локальное',
                 'Возможности': {'1.2.1.2.3.2.2.4.2.3':'array'},
                 'Приобретение': {'name':'1.2.1.2.3.2.2.4.2.4.1.2.1.3','url':'1.2.1.2.3.2.2.4.2.4.1.2.1.2','date':'1.2.1.2.3.2.2.4.2.4.1.3.2'},
                 'Образец возможностей': {
@@ -926,6 +896,7 @@
                 'Реакция': false
             },
             '3': {
+                'Тип': 'Локальное',
                 'Возможности': null,
                 'Приобретение': {'url':'1.2.1.1.4.2'},
                 'Образец возможностей': null,
@@ -933,6 +904,55 @@
                     'url':'./Дизайн/favicon1.png'
                 },
                 'Реакция': '2'
+            },
+            '4': {
+                'Тип': 'Локальное',
+                'Возможности': {'1.2.1.2.3.2.3.3.2':'array'},
+                'Приобретение': {'image':'1.2.1.2.3.2.3.3.3.1.5','url':'1.2.1.2.3.2.3.3.3.1.2','text':'1.2.1.2.3.2.3.3.3.1.3'},
+                'Образец возможностей': {
+                    'array':[
+                        {'image':'./Дизайн/email.png','text':'Email создателя','url':'m' + 'a' + 'i' + 'l' + 't' + 'o' + ':' + 'i' + 't' + '@' + 'framework-csdr.ru'},
+                        {'image':'./Дизайн/phpstorm.png','text':'Проект поддерживал JetBrains PhpStorm','url':'https://www.jetbrains.com/?from=framework+csdr'}
+                    ]
+                },
+                'Образец приобретения': {
+                    0:{
+                        'image':'./Дизайн/email.png',
+                        'text':'Email создателя',
+                        'url':'m' + 'a' + 'i' + 'l' + 't' + 'o' + ':' + 'i' + 't' + '@' + 'framework-csdr.ru'
+                    },
+                    1:{
+                        'image':'./Дизайн/phpstorm.png',
+                        'text':'Проект поддерживал JetBrains PhpStorm',
+                        'url':'https://www.jetbrains.com/?from=framework+csdr'
+                    }
+                },
+                'Реакция': false
+            },
+            '5': {
+                'Тип': 'Локальное',
+                'Возможности': {'1.2.1.2.3.2.3.3.3.1.6':'style','1.2.1.2.3.2.3.3.3.1.5':'image'},
+                'Приобретение': {'style':'1.2.1.2.3.2.3.3.3.1.1'},
+                'Образец возможностей': {
+                    'style':{
+                        'float':'right',
+                        'padding-left':'5px',
+                        'background':'url({IMAGE_URL}) no-repeat 0 0',
+                        'height':'24px',
+                        'width':'24px'
+                    },
+                    'image':'./Дизайн/email.png'
+                },
+                'Образец приобретения': {
+                    'style':{
+                        'float':'right',
+                        'padding-left':'5px',
+                        'background':'url(./Дизайн/email.png) no-repeat 0 0',
+                        'height':'24px',
+                        'width':'24px'
+                    }
+                },
+                'Реакция': '3'
             },
         };
 
@@ -986,7 +1006,7 @@
                                 'get_place_link' : function ($opportunities = {'place_id':null}){
 
                                     /*создаём ссылку на корень Сценарий*/
-                                    var $link = $GLOBALS['Сценарий'];
+                                    var $link = $GLOBALS['Места'];
 
                                     /*создаём уровень вложенности*/
                                     var $place_id_explode = $opportunities['place_id'].split('.');
@@ -1018,7 +1038,7 @@
                                     var $parent_id = false;
 
                                     /*создаём ссылку на корень Сценарий*/
-                                    var $link = $GLOBALS['Сценарий'];
+                                    var $link = $GLOBALS['Места'];
 
                                     /*создаём уровень вложенности*/
                                     var $place_id_explode = $opportunities['child_place_id'].split('.');
@@ -1069,6 +1089,40 @@
                                 /*алгоритм получения значений c мест*/
                                 'get_place_values' : function($opportunities = {'communication_id':null,'helper_algorithms':{'get_place_link':null}}){
 
+                                    var $helper_algorithms = {
+                                        /*копируем текст/массив*/
+                                        'copy': function($opportunities = {'value':null,'helper_algorithms':{'copy':null}}){
+
+                                            if(typeof $opportunities['value'] === 'object')  {
+
+                                                var $value_copy = [];
+
+                                                for($key in $opportunities['value']) {
+                                                    if($opportunities['value'].hasOwnProperty($key)) {
+                                                        var $value_row = $opportunities['value'][$key];
+                                                        if($value_row && typeof $value_row === 'object') {
+                                                            $value_copy[$key] = $opportunities['helper_algorithms']['copy']({
+                                                                'value':$value_row,
+                                                                'helper_algorithms':{
+                                                                    'copy':$opportunities['helper_algorithms']['copy']
+                                                                }
+                                                            });
+                                                        }
+                                                        else {
+                                                            $value_copy[$key] = $value_row;
+                                                        }
+                                                    }
+                                                }
+
+                                            }
+                                            else{
+                                                var $value_copy =  $opportunities['value'];
+                                            }
+
+                                            return $value_copy;
+                                        }
+                                    };
+
                                     var $communication_id = $opportunities['communication_id'];
 
                                     /*получаем значения с мест*/
@@ -1083,6 +1137,14 @@
                                             $place_values[$place_code] = $opportunities['helper_algorithms']['get_place_link']({
                                                 'place_id':$place_id
                                             })['Вложение'];
+
+                                            /*убираем ссылку на массив*/
+                                            $place_values[$place_code] = $helper_algorithms['copy']({
+                                                'value':$place_values[$place_code],
+                                                'helper_algorithms':{
+                                                    'copy':$helper_algorithms['copy']
+                                                }
+                                            });
 
                                         }
 
@@ -1541,11 +1603,25 @@
                     };
                 }
             },
+            '3': {
+                'Способность'  : function($opportunities = []){
+
+                    var $style = $opportunities['style'];
+                    var $background = $style['background'];
+
+                    $style['background'] = $background.replace('{IMAGE_URL}', $opportunities['image']);
+
+                    /*результат*/
+                    return {
+                        'style': $style,
+                    };
+                }
+            },
         };
 
         /*активируем рефлексию интерфейса*/
         document.addEventListener('DOMContentLoaded', function() {
-            $GLOBALS['Реакции'][1]['Способность']({'reflex_id':$GLOBALS['Сценарий']['1']['Вложение']['1.1']['Вложение']['1.1.1']['Вложение']});
+            $GLOBALS['Реакции'][1]['Способность']({'reflex_id':$GLOBALS['Места']['1']['Вложение']['1.1']['Вложение']['1.1.1']['Вложение']});
         });
 
     </script>
