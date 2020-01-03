@@ -126,6 +126,12 @@
                                 'Вложение': '1'
                             },
                             '1.1.2': {
+                                'Смысл': 'добавочное для id (из цикла) для авто-запуска',
+                                'Роль': {'Атрибут':'information'},
+                                'Связь': false,
+                                'Вложение': ''
+                            },
+                            '1.1.3': {
                                 'Смысл': 'Логика интерфейса',
                                 'Роль': {'Запрос': 'reaction'},
                                 'Связь': '1',
@@ -863,7 +869,7 @@
         $GLOBALS['Связи']    = {
             '1': {
                 'Тип': 'Глобальное',
-                'Возможности': {'1.1.1':'reflex_id'},
+                'Возможности': {'1.1.1':'reflex_id','1.1.2':'parent_additional_id'},
                 'Приобретение': null,
                 'Образец возможностей': {
                     'reflex_id':'1'
@@ -1175,7 +1181,7 @@
                                         'all': function ($opportunities = {}) {
                                             /*ничего не делаем*/
                                         },
-                                        /*если у Сценарий роль html тэга*/
+                                        /*если у места роль html тэга*/
                                         'other': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'helper_algorithms':{'get_parent_link':null,'get_parent_id':null}}) {
 
                                             /*создаём новый тэг*/
@@ -1198,7 +1204,105 @@
                                         },
                                     },
                                     'Ожидание': {
-                                        /*если у Сценарий роль ожидания нажатия на оболочку*/
+                                        /*если у места роль ожидания запроса*/
+                                        'request': function ($opportunities = {'attachment_places':null,'parent_additional_id':null,'helper_algorithms':{'place_activation':null,'get_place_link':null,'set_place_values':null}}) {
+
+
+                                            /*вспомогательные алгоритмы*/
+                                            $helper_algorithms = {
+                                                /*получаем якорь*/
+                                                'get_anchor': function($opportunities = null){
+
+                                                    var $anchor = window.location.hash;
+
+                                                    /*если есть якорь*/
+                                                    if($anchor != ""){
+
+                                                        /*убираем знак #*/
+                                                        var $anchor_explode = $anchor.split('#',2);
+
+                                                        $anchor = $anchor[1];
+
+                                                    }
+
+                                                },
+                                                /*получаем параметры*/
+                                                'get_parameters': function($opportunities = null){
+
+                                                    /*параметры*/
+                                                    var $parameters = [];
+
+                                                    /*получаем параметры запроса в виде ссылки*/
+                                                    var $url_parameters = window.location.search;
+
+                                                    /*разбираем ссылку на параметры*/
+                                                    var $parameters_rows = ($url_parameters.substr(1)).split('&');
+
+                                                    /*если есть параметры*/
+                                                    if($parameters_rows[0] != ""){
+
+                                                        /*перебираем все параметры*/
+                                                        for (var i = 0; i < $parameters_rows.length; i ++) {
+
+                                                            /*один параметр*/
+                                                            var $parameters_row = $parameters_rows[i].split('=');
+
+                                                            /*пишем в итоговый массив имя переменной и ее значение*/
+                                                            $parameters[$parameters_row[0]] = $parameters_row[1];
+                                                        }
+
+                                                    }
+
+                                                    /*результат*/
+                                                    return $parameters;
+
+                                                },
+                                            };
+
+                                            /*получаем информацию из браузера*/
+                                            var $browser_data = {
+                                                'url': window.location.pathname,
+                                                'anchor': $helper_algorithms['get_anchor'](),
+                                                'parameters': $helper_algorithms['get_parameters'](),
+                                            };
+
+                                            /*если у места есть связь*/
+                                            if($opportunities['place_value']['Связь']){
+
+                                                var $communication_id = $opportunities['place_value']['Связь'];
+
+                                                var $place_values_from_browser = [];
+
+                                                /*берём места для сохранения данных с браузера*/
+                                                for(var $request_id in $GLOBALS['Связи'][$communication_id]['Возможности']){
+
+                                                    var $place_id = $GLOBALS['Связи'][$communication_id]['Возможности'][$request_id];
+
+                                                    $place_values_from_browser[$place_id] = $browser_data[$request_id];
+
+                                                }
+
+                                                /*сохраняем значения*/
+                                                $opportunities['helper_algorithms']['set_place_values']({
+                                                    'place_values':$place_values_from_browser,
+                                                    'helper_algorithms':{
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link']
+                                                    }
+                                                });
+
+                                            }
+
+                                            /*активируем приложенные места*/
+                                            $opportunities['helper_algorithms']['place_activation']({
+                                                'places':$opportunities['attachment_places'],
+                                                'parent_additional_id':$opportunities['parent_additional_id'],
+                                                'helper_algorithms':{
+                                                    'place_activation':$opportunities['helper_algorithms']['place_activation']
+                                                }
+                                            });
+
+                                        },
+                                        /*если у места роль ожидания нажатия на оболочку*/
                                         'click': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1221,7 +1325,7 @@
                                                 var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-click'));
                                                 var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-click'));
 
-                                                /*активируем приложенные Сценарий*/
+                                                /*активируем приложенные места*/
                                                 $opportunities['helper_algorithms']['place_activation']({
                                                     'places':$attachment_places,
                                                     'parent_additional_id':$parent_additional_id,
@@ -1232,7 +1336,7 @@
 
                                             };
                                         },
-                                        /*если у Сценарий роль ожидания наведения на оболочку*/
+                                        /*если у места роль ожидания наведения на оболочку*/
                                         'hover': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1255,7 +1359,7 @@
                                                 var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-hover'));
                                                 var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-hover'));
 
-                                                /*активируем приложенные Сценарий*/
+                                                /*активируем приложенные места*/
                                                 $opportunities['helper_algorithms']['place_activation']({
                                                     'places':$attachment_places,
                                                     'parent_additional_id':$parent_additional_id,
@@ -1266,7 +1370,7 @@
 
                                             };
                                         },
-                                        /*если у Сценарий роль ожидания отведения с оболочки*/
+                                        /*если у места роль ожидания отведения с оболочки*/
                                         'abduction': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1289,7 +1393,7 @@
                                                 var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-abduction'));
                                                 var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-abduction'));
 
-                                                /*активируем приложенные Сценарий*/
+                                                /*активируем приложенные места*/
                                                 $opportunities['helper_algorithms']['place_activation']({
                                                     'places':$attachment_places,
                                                     'parent_additional_id':$parent_additional_id,
@@ -1302,7 +1406,7 @@
                                         },
                                     },
                                     'Атрибут': {
-                                        /*если у Сценарий роль ожидания нажатия на оболочку*/
+                                        /*если у места роль ожидания нажатия на оболочку*/
                                         'information': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'helper_algorithms':{'get_parent_link':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1318,7 +1422,7 @@
                                             $parent_link.innerHTML = $opportunities['place_value']['Вложение'];
 
                                         },
-                                        /*если у Сценарий роль очистки оболочки*/
+                                        /*если у места роль очистки оболочки*/
                                         'clear': function ($opportunities = {'place_id':null,'parent_additional_id':null,'helper_algorithms':{'get_parent_link':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1334,7 +1438,7 @@
                                             $parent_link.innerHTML = '';
 
                                         },
-                                        /*если у Сценарий роль стиля оболочки*/
+                                        /*если у места роль стиля оболочки*/
                                         'style': function ($opportunities = {'place_id':null,'parent_additional_id':null,'place_value':null,'helper_algorithms':{'get_parent_link':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1352,7 +1456,7 @@
                                                 Object.assign($parent_link.style,$opportunities['place_value']['Вложение']);
                                             }
                                         },
-                                        /*если у Сценарий роль атрибута тэга*/
+                                        /*если у места роль атрибута тэга*/
                                         'other': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'helper_algorithms':{'get_parent_link':null,'get_parent_id':null}}) {
 
                                             /*получаем родительский линк*/
@@ -1374,7 +1478,7 @@
                                         /*если запрос в реакцию*/
                                         'reaction': function ($opportunities = {'place_value':null,'helper_algorithms':{'get_place_values':null,'get_place_link':null,'set_place_values':null}}) {
 
-                                            /*если у Сценарий есть связь*/
+                                            /*если у места есть связь*/
                                             if($opportunities['place_value']['Связь']){
 
                                                 var $communication_id = $opportunities['place_value']['Связь'];
@@ -1432,7 +1536,7 @@
                                         /*распределение переменных с массива*/
                                         'distribution': function ($opportunities = {'place_value':null,'attachment_places':null,'parent_additional_id':null,'helper_algorithms':{'place_activation':null,'get_place_values':null,'get_place_link':null,'set_place_values':null}}) {
 
-                                            /*если у Сценарий есть связь*/
+                                            /*если у места есть связь*/
                                             if($opportunities['place_value']['Связь']) {
 
                                                 var $communication_id = $opportunities['place_value']['Связь'];
@@ -1477,7 +1581,7 @@
                                                         }
                                                     });
 
-                                                    /*активируем приложенные Сценарий*/
+                                                    /*активируем приложенные места*/
                                                     $opportunities['helper_algorithms']['place_activation']({
                                                         'places':$opportunities['attachment_places'],
                                                         'parent_additional_id':$opportunities['parent_additional_id'] + '-' + $key,
@@ -1501,7 +1605,7 @@
 
                                     var $place_id = $opportunities['places'][$key];
 
-                                    /*приложенные Сценарий*/
+                                    /*приложенные места*/
                                     var $attachment_places = false;
 
                                     /*если id Сценарий с приложенными Сценарийми: ['id' => ['id2','id3']]*/
@@ -1513,7 +1617,7 @@
                                         var $keys = Object.keys($place_id_with_attachment);
                                         $place_id = $keys[0];
 
-                                        /*приложенные Сценарий*/
+                                        /*приложенные места*/
                                         $attachment_places = $place_id_with_attachment[$place_id];
                                     }
                                     /*если обозначен рефлекс*/
@@ -1523,7 +1627,10 @@
                                         var $reflex_id = $place_id.replace('reflex_','');
 
                                         /*активируем рефлекс*/
-                                        $GLOBALS['Реакции'][1]['Способность']({'reflex_id':$reflex_id});
+                                        $GLOBALS['Реакции'][1]['Способность']({
+                                            'reflex_id':$reflex_id,
+                                            'parent_additional_id':$opportunities['parent_additional_id']
+                                        });
 
                                         continue;
                                     }
@@ -1574,10 +1681,10 @@
 
                     if(eval($reflex_value['Права'])){
 
-                        /*активируем Сценарий*/
+                        /*активируем места и рефлексы*/
                         $helper_algorithms['place_activation']({
                             'places':$reflex_value['Сценарий'],
-                            'parent_additional_id':'',
+                            'parent_additional_id':$opportunities['parent_additional_id'],
                             'helper_algorithms':{
                                 'place_activation':$helper_algorithms['place_activation']
                             }
@@ -1621,7 +1728,10 @@
 
         /*активируем рефлексию интерфейса*/
         document.addEventListener('DOMContentLoaded', function() {
-            $GLOBALS['Реакции'][1]['Способность']({'reflex_id':$GLOBALS['Места']['1']['Вложение']['1.1']['Вложение']['1.1.1']['Вложение']});
+            $GLOBALS['Реакции'][1]['Способность']({
+                'reflex_id':$GLOBALS['Места']['1']['Вложение']['1.1']['Вложение']['1.1.1']['Вложение'],
+                'parent_additional_id':$GLOBALS['Места']['1']['Вложение']['1.1']['Вложение']['1.1.2']['Вложение']
+            });
         });
 
     </script>
