@@ -23,8 +23,8 @@
                         'Ориентир': 'Главная страница',
                         'Расчёты': 'Презентация + новости',
                         'Сценарий': [
-                            'reflex_1.1.1', 'reflex_1.1.2', 'reflex_1.1.3',
-                            'reflex_1.1.4', 'reflex_1.1.5'
+                            'place_1.2.1.2.3.2.2.2.2.8','reflex_1.1.1', 'reflex_1.1.2',
+                            'reflex_1.1.3', 'reflex_1.1.4', 'reflex_1.1.5'
                         ],
                         'Права': 'true',
                         'Вложение': {
@@ -98,7 +98,9 @@
                                     'place_1.2.1.2.3.2.2.2.2.5', 'place_1.2.1.2.3.2.2.2.2.5.1', 'place_1.2.1.2.3.2.2.2.2.5.2',
                                     'place_1.2.1.2.3.2.2.2.2.6', 'place_1.2.1.2.3.2.2.2.2.6.1', 'place_1.2.1.2.3.2.2.2.2.6.2'
                                 ],
-                                'Права': '(navigator.plugins && (navigator.plugins["Shockwave Flash"] || navigator.plugins["Shockwave Flash 2.0"])) || (navigator.mimeTypes && navigator.mimeTypes[\'application/x-shockwave-flash\'] && navigator.mimeTypes[\'application/x-shockwave-flash\'].enabledPlugin) || (!navigator.plugins && !navigator.mimeTypes)',
+                                'Права': {
+                                    0: ['{1.2.1.2.3.2.2.2.2.7}','=','true']
+                                },
                                 'Вложение': false
                             },
                         }
@@ -433,6 +435,18 @@
                                                                                                 'Вложение': 'opaque'
                                                                                             },
                                                                                         }
+                                                                                    },
+                                                                                    '1.2.1.2.3.2.2.2.2.7': {
+                                                                                        'Смысл': 'Статус установки флеша в браузере',
+                                                                                        'Роль': {'Атрибут':'information'},
+                                                                                        'Связь': false,
+                                                                                        'Вложение': null
+                                                                                    },
+                                                                                    '1.2.1.2.3.2.2.2.2.8': {
+                                                                                        'Смысл': 'Проверка статуса установки флеша в браузере',
+                                                                                        'Роль': {'Запрос':'reaction'},
+                                                                                        'Связь': '6',
+                                                                                        'Вложение': false
                                                                                     },
                                                                                 }
                                                                             },
@@ -960,6 +974,16 @@
                 },
                 'Реакция': '3'
             },
+            '6': {
+                'Тип': 'Локальное',
+                'Возможности': null,
+                'Приобретение': {'flash_setup':'1.2.1.2.3.2.2.2.2.7'},
+                'Образец возможностей': null,
+                'Образец приобретения': {
+                    'flash_setup':'true'
+                },
+                'Реакция': '4'
+            },
         };
 
         /*4 компонент проекта*/
@@ -972,7 +996,7 @@
                         /*алгоритм выдачи значения рефлекса по id*/
                         'reflex_value' : function ($opportunities = {'reflex_id':null}){
 
-                            /*создаём ссылку на корень Сценарий*/
+                            /*создаём ссылку на корень места*/
                             var $reflex_value = $GLOBALS['Рефлексы'];
 
                             /*создаём уровень вложенности*/
@@ -1003,47 +1027,181 @@
                             /*результат*/
                             return $reflex_value;
                         },
+                        /*алгоритм выдачи ссылки на место по id*/
+                        'get_place_link' : function ($opportunities = {'place_id':null}){
+
+                            /*создаём ссылку на корень места*/
+                            var $link = $GLOBALS['Места'];
+
+                            /*создаём уровень вложенности*/
+                            var $place_id_explode = $opportunities['place_id'].split('.');
+
+                            var $last_place_id;
+
+                            $place_id_explode.forEach(function($place_id, $key) {
+                                if($key == 0){
+                                    /*определяем название уровня*/
+                                    $last_place_id = $place_id;
+                                }
+                                else{
+                                    /*определяем название уровня*/
+                                    $last_place_id = $last_place_id + '.' + $place_id;
+                                    /*переходим во вложенность*/
+                                    $link = $link['Вложение'];
+                                }
+                                /*переходим во вложенность*/
+                                $link = $link[$last_place_id];
+                            }, $link, $last_place_id);
+
+                            /*результат*/
+                            return $link;
+                        },
+                        /*проверяем права для активации рефлекса*/
+                        'verification_rights' : function($opportunities = {'rights' : null,'helper_algorithms' : {'verification_rights' : null,'get_place_link' :null}}){
+
+                            var $helper_algorithms = {
+                                /*получаем значения с мест, если необходимо*/
+                                'get_place_id_from_value': function ($opportunities = {'value': null,'helper_algorithms': {'get_place_link': null}}) {
+
+                                    var $value = $opportunities['value'];
+
+                                    if(typeof($opportunities['value']) == 'string'){
+
+                                        var $value_is_place_id = $opportunities['value'].match(/{(\d+(\.\d)*)}/i);
+
+                                        if ($value_is_place_id != null && typeof($value_is_place_id[1]) != "undefined") {
+                                            /*получаем значение с места*/
+                                            $value = $opportunities['helper_algorithms']['get_place_link']({
+                                                'place_id': $value_is_place_id[1]
+                                            })['Вложение'];
+
+                                        }
+                                    }
+
+                                    /*результат*/
+                                    return $value;
+
+                                }
+                            };
+
+                            /*значение проверки*/
+                            var $verification = false;
+
+                            /*если права есть без проверки*/
+                            if($opportunities['rights'] == 'true'){
+                                $verification = true;
+                            }
+                            /*если прав нет, проверять не нужно*/
+                            else if($opportunities['rights'] == 'false'){
+                                $verification = true;
+                            }
+                            /*проверяем*/
+                            else{
+
+                                /*проверяем на инкапсуляцию*/
+                                var $keys = Object.keys($opportunities['rights']);
+                                var $encapsulation = $keys[0];
+
+                                /*если есть особая инкапсуляция*/
+                                if(typeof($encapsulation) == 'string' && ($encapsulation.match(/[constant|variation]/i)) != null){
+
+                                    var $encapsulation_verification = [];
+
+                                    for(var $encapsulation_in in $opportunities['rights'][$encapsulation]){
+
+                                        var $rights_in = $opportunities['rights'][$encapsulation][$encapsulation_in];
+
+                                        var $rights = [];
+
+                                        $rights[$encapsulation_in] = $rights_in;
+
+                                        var $result = $opportunities['helper_algorithms']['verification_rights']({
+                                            'rights' : $rights,
+                                            'helper_algorithms' : {
+                                                'verification_rights' :$opportunities['helper_algorithms']['verification_rights'],
+                                                'get_place_link' :$opportunities['helper_algorithms']['get_place_link']
+                                            }
+                                        });
+
+                                        $encapsulation_verification.push($result);
+
+                                    }
+
+                                    /*инкапсуляция OR сработала*/
+                                    if(($encapsulation.match(/variation/i)) != null && $encapsulation_verification.includes(true) == true){
+                                        $verification = true;
+                                    }
+                                    /*инкапсуляция AND сработала*/
+                                    else if(($encapsulation.match(/constant/i)) != null && $encapsulation_verification.includes(false) == false){
+                                        $verification = true;
+                                    }
+                                    else{
+                                        $verification = false;
+                                    }
+
+                                }
+                                /*сопоставление*/
+                                else{
+
+                                    var $operation = $opportunities['rights'][$encapsulation][1];
+
+                                    /*получаем значения с мест, если необходимо*/
+                                    var $value_1 = $helper_algorithms['get_place_id_from_value']({
+                                        'value' : $opportunities['rights'][$encapsulation][0],
+                                        'helper_algorithms' : {
+                                            'get_place_link' :$opportunities['helper_algorithms']['get_place_link']
+                                        }
+                                    });
+
+                                    var $value_2 = $helper_algorithms['get_place_id_from_value']({
+                                        'value' : $opportunities['rights'][$encapsulation][2],
+                                        'helper_algorithms' : {
+                                            'get_place_link' :$opportunities['helper_algorithms']['get_place_link']
+                                        }
+                                    });
+
+                                    /*проверяем*/
+                                    if($operation=='>' && $value_1>$value_2){
+                                        $verification = true;
+                                    }
+                                    else if($operation=='=' && $value_1==$value_2){
+                                        $verification = true;
+                                    }
+                                    else if($operation=='>=' && $value_1>=$value_2){
+                                        $verification = true;
+                                    }
+                                    else if($operation=='!=' && $value_1!=$value_2){
+                                        $verification = true;
+                                    }
+                                    else if($operation=='in' && $value_2.includes($value_1) == true){
+                                        $verification = true;
+                                    }
+                                    else if($operation=='not in' && $value_2.includes($value_1) == false){
+                                        $verification = true;
+                                    }
+                                    else{
+                                        $verification = false;
+                                    }
+
+                                }
+                            }
+
+                            /*результат*/
+                            return $verification;
+
+                        },
                         /*алгоритм активации мест*/
-                        'place_activation' : function($opportunities = {'places':null,'parent_additional_id':null,'helper_algorithms':{'place_activation':null}}){
+                        'place_activation' : function($opportunities = {'places':null,'parent_additional_id':null,'helper_algorithms':{'get_place_link':null,'place_activation':null}}){
 
                             /*вспомогательные алгоритмы*/
                             $helper_algorithms = {
-                                /*алгоритм выдачи ссылки на место по id*/
-                                'get_place_link' : function ($opportunities = {'place_id':null}){
-
-                                    /*создаём ссылку на корень Сценарий*/
-                                    var $link = $GLOBALS['Места'];
-
-                                    /*создаём уровень вложенности*/
-                                    var $place_id_explode = $opportunities['place_id'].split('.');
-
-                                    var $last_place_id;
-
-                                    $place_id_explode.forEach(function($place_id, $key) {
-                                        if($key == 0){
-                                            /*определяем название уровня*/
-                                            $last_place_id = $place_id;
-                                        }
-                                        else{
-                                            /*определяем название уровня*/
-                                            $last_place_id = $last_place_id + '.' + $place_id;
-                                            /*переходим во вложенность*/
-                                            $link = $link['Вложение'];
-                                        }
-                                        /*переходим во вложенность*/
-                                        $link = $link[$last_place_id];
-                                    }, $link, $last_place_id);
-
-                                    /*результат*/
-                                    return $link;
-                                },
                                 /*алгоритм выдачи id родителя тэга*/
                                 'get_parent_id' : function ($opportunities = {'child_place_id':null}){
 
                                     /*id родительского тэга*/
                                     var $parent_id = false;
 
-                                    /*создаём ссылку на корень Сценарий*/
+                                    /*создаём ссылку на корень места*/
                                     var $link = $GLOBALS['Места'];
 
                                     /*создаём уровень вложенности*/
@@ -1158,10 +1316,10 @@
 
                                     return $place_values;
                                 },
-                                /*алгоритм установки значений по Сценарийм*/
+                                /*алгоритм установки значений по местам*/
                                 'set_place_values' : function($opportunities = {'place_values':null,'helper_algorithms':{'get_place_link':null}}){
 
-                                    /*сохраняем результат по Сценарийм*/
+                                    /*сохраняем результат по местам*/
                                     for(var $place_id in $opportunities['place_values']) {
 
                                         var $place_value = $opportunities['place_values'][$place_id];
@@ -1174,6 +1332,40 @@
                                         /*сохраняем значение*/
                                         $place_link['Вложение'] = $place_value;
                                     }
+                                },
+                                /*передаём значения атрибутов тэга в места*/
+                                'transfer_tag_attribute_value_to_place' : function($opportunities = {'communication_id':null,'tag':null,'helper_algorithms':{'get_place_link':null,'set_place_values':null}}){
+
+                                    var $communication_id = $opportunities['communication_id'];
+
+                                    if($GLOBALS['Связи'][$communication_id]['Возможности'] != null){
+
+                                        var $place_values_from_tag = [];
+
+                                        for(var $attribute_name in $GLOBALS['Связи'][$communication_id]['Возможности']) {
+
+                                            var $place_id = $GLOBALS['Связи'][$communication_id]['Возможности'][$attribute_name];
+
+                                            var $attribute_value = $opportunities['tag'].getAttribute($attribute_name);
+
+                                            if($attribute_value == 'null'){
+                                                $attribute_value = null;
+                                            }
+
+                                            $place_values_from_tag[$place_id] = $attribute_value;
+
+                                        }
+
+                                        /*сохраняем значения*/
+                                        $opportunities['helper_algorithms']['set_place_values']({
+                                            'place_values':$place_values_from_tag,
+                                            'helper_algorithms':{
+                                                'get_place_link':$opportunities['helper_algorithms']['get_place_link']
+                                            }
+                                        });
+
+                                    }
+
                                 },
                                 /*алгоритм активации ролей*/
                                 'activation_roles' : {
@@ -1224,6 +1416,12 @@
                                                         $anchor = $anchor[1];
 
                                                     }
+                                                    else{
+                                                        $anchor = null;
+                                                    }
+
+                                                    /*результат*/
+                                                    return $anchor;
 
                                                 },
                                                 /*получаем параметры*/
@@ -1276,9 +1474,34 @@
                                                 /*берём места для сохранения данных с браузера*/
                                                 for(var $request_id in $GLOBALS['Связи'][$communication_id]['Возможности']){
 
-                                                    var $place_id = $GLOBALS['Связи'][$communication_id]['Возможности'][$request_id];
+                                                    if($request_id == 'parameters'){
+                                                        for(var $request_id in $GLOBALS['Связи'][$communication_id]['Возможности']['parameters']){
 
-                                                    $place_values_from_browser[$place_id] = $browser_data[$request_id];
+                                                            var $place_id = $GLOBALS['Связи'][$communication_id]['Возможности']['parameters'][$request_id];
+
+                                                            if(typeof $browser_data['parameters'][$request_id] != "undefined" && $browser_data['parameters'][$request_id] != ""){
+                                                                var $request_data = $browser_data['parameters'][$request_id];
+                                                            }
+                                                            else{
+                                                                var $request_data = null;
+                                                            }
+
+                                                            $place_values_from_browser[$place_id] = $request_data;
+                                                        }
+                                                    }
+                                                    else{
+
+                                                        var $place_id = $GLOBALS['Связи'][$communication_id]['Возможности'][$request_id];
+
+                                                        if(typeof $browser_data[$request_id] != "undefined"){
+                                                            var $request_data = $browser_data[$request_id];
+                                                        }
+                                                        else{
+                                                            var $request_data = null;
+                                                        }
+
+                                                        $place_values_from_browser[$place_id] = $request_data;
+                                                    }
 
                                                 }
 
@@ -1297,13 +1520,14 @@
                                                 'places':$opportunities['attachment_places'],
                                                 'parent_additional_id':$opportunities['parent_additional_id'],
                                                 'helper_algorithms':{
+                                                    'get_place_link':$opportunities['helper_algorithms']['get_place_link'],
                                                     'place_activation':$opportunities['helper_algorithms']['place_activation']
                                                 }
                                             });
 
                                         },
                                         /*если у места роль ожидания нажатия на оболочку*/
-                                        'click': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null}}) {
+                                        'click': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null,'set_place_values':null,'transfer_tag_attribute_value_to_place':null}}) {
 
                                             /*получаем родительский линк*/
                                             var $parent_link = $opportunities['helper_algorithms']['get_parent_link']({
@@ -1316,28 +1540,59 @@
 
                                             /*запоминаем необходимые данные*/
                                             $parent_link.setAttribute("places-attachment-by-click", JSON.stringify($opportunities['attachment_places']));
-                                            $parent_link.setAttribute("parent-additional-id-by-click", JSON.stringify($opportunities['parent_additional_id']));
+                                            $parent_link.setAttribute("communication-id-by-click", $opportunities['place_value']['Связь']);
 
                                             /*ставим на тэг активацию мест*/
                                             $parent_link.onclick = function(){
 
                                                 /*необходимые данные с тэга*/
                                                 var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-click'));
-                                                var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-click'));
+                                                var $communication_id = this.getAttribute('communication-id-by-click');
+
+                                                /*передаём значения атрибутов в места*/
+                                                $opportunities['helper_algorithms']['transfer_tag_attribute_value_to_place']({
+                                                    'communication_id':$communication_id,
+                                                    'tag':this,
+                                                    'helper_algorithms':{
+                                                        'set_place_values':$opportunities['helper_algorithms']['set_place_values'],
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link']
+                                                    }
+                                                });
+
+                                                /*получаем ссылку и указанного в связи атрибута*/
+                                                var $acquisition = $GLOBALS['Связи'][$communication_id]['Приобретение'];
+
+                                                if($acquisition!=null){
+
+                                                    var $keys = Object.keys($acquisition);
+                                                    var $attribute_href = $keys[0];
+
+                                                    var $page_link = this.getAttribute($attribute_href);
+
+                                                    /*передаём в браузер ссылку*/
+                                                    history.pushState(null, null, $page_link);
+
+                                                }
 
                                                 /*активируем приложенные места*/
                                                 $opportunities['helper_algorithms']['place_activation']({
                                                     'places':$attachment_places,
-                                                    'parent_additional_id':$parent_additional_id,
+                                                    'parent_additional_id':'',
                                                     'helper_algorithms':{
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link'],
                                                         'place_activation':$opportunities['helper_algorithms']['place_activation']
                                                     }
                                                 });
 
+
+
+                                                /*убираем открытие по href*/
+                                                return false;
+
                                             };
                                         },
                                         /*если у места роль ожидания наведения на оболочку*/
-                                        'hover': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null}}) {
+                                        'hover': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null,'set_place_values':null,'transfer_tag_attribute_value_to_place':null}}) {
 
                                             /*получаем родительский линк*/
                                             var $parent_link = $opportunities['helper_algorithms']['get_parent_link']({
@@ -1350,20 +1605,31 @@
 
                                             /*запоминаем необходимые данные*/
                                             $parent_link.setAttribute("places-attachment-by-hover", JSON.stringify($opportunities['attachment_places']));
-                                            $parent_link.setAttribute("parent-additional-id-by-hover", JSON.stringify($opportunities['parent_additional_id']));
+                                            $parent_link.setAttribute("communication-id-by-hover", $opportunities['place_value']['Связь']);
 
                                             /*ставим на тэг активацию мест*/
                                             $parent_link.onmouseover = function(){
 
                                                 /*необходимые данные с тэга*/
                                                 var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-hover'));
-                                                var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-hover'));
+                                                var $communication_id = this.getAttribute('communication-id-by-hover');
+
+                                                /*передаём значения атрибутов в места*/
+                                                $opportunities['helper_algorithms']['transfer_tag_attribute_value_to_place']({
+                                                    'communication_id':$communication_id,
+                                                    'tag':this,
+                                                    'helper_algorithms':{
+                                                        'set_place_values':$opportunities['helper_algorithms']['set_place_values'],
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link']
+                                                    }
+                                                });
 
                                                 /*активируем приложенные места*/
                                                 $opportunities['helper_algorithms']['place_activation']({
                                                     'places':$attachment_places,
-                                                    'parent_additional_id':$parent_additional_id,
+                                                    'parent_additional_id':'',
                                                     'helper_algorithms':{
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link'],
                                                         'place_activation':$opportunities['helper_algorithms']['place_activation']
                                                     }
                                                 });
@@ -1371,7 +1637,7 @@
                                             };
                                         },
                                         /*если у места роль ожидания отведения с оболочки*/
-                                        'abduction': function ($opportunities = {'place_id':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null}}) {
+                                        'abduction': function ($opportunities = {'place_id':null,'place_value':null,'parent_additional_id':null,'attachment_places':null,'helper_algorithms':{'get_parent_link':null,'place_activation':null,'get_parent_id':null,'set_place_values':null,'transfer_tag_attribute_value_to_place':null}}) {
 
                                             /*получаем родительский линк*/
                                             var $parent_link = $opportunities['helper_algorithms']['get_parent_link']({
@@ -1384,20 +1650,31 @@
 
                                             /*запоминаем необходимые данные*/
                                             $parent_link.setAttribute("places-attachment-by-abduction", JSON.stringify($opportunities['attachment_places']));
-                                            $parent_link.setAttribute("parent-additional-id-by-abduction", JSON.stringify($opportunities['parent_additional_id']));
+                                            $parent_link.setAttribute("communication-id-by-abduction", $opportunities['place_value']['Связь']);
 
                                             /*ставим на тэг активацию мест*/
                                             $parent_link.onmouseout = function(){
 
                                                 /*необходимые данные с тэга*/
                                                 var $attachment_places = JSON.parse(this.getAttribute('places-attachment-by-abduction'));
-                                                var $parent_additional_id = JSON.parse(this.getAttribute('parent-additional-id-by-abduction'));
+                                                var $communication_id = this.getAttribute('communication-id-by-abduction');
+
+                                                /*передаём значения атрибутов в места*/
+                                                $opportunities['helper_algorithms']['transfer_tag_attribute_value_to_place']({
+                                                    'communication_id':$communication_id,
+                                                    'tag':this,
+                                                    'helper_algorithms':{
+                                                        'set_place_values':$opportunities['helper_algorithms']['set_place_values'],
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link']
+                                                    }
+                                                });
 
                                                 /*активируем приложенные места*/
                                                 $opportunities['helper_algorithms']['place_activation']({
                                                     'places':$attachment_places,
-                                                    'parent_additional_id':$parent_additional_id,
+                                                    'parent_additional_id':'',
                                                     'helper_algorithms':{
+                                                        'get_place_link':$opportunities['helper_algorithms']['get_place_link'],
                                                         'place_activation':$opportunities['helper_algorithms']['place_activation']
                                                     }
                                                 });
@@ -1499,7 +1776,7 @@
                                                     /*активируем реакцию*/
                                                     var $results = $GLOBALS['Реакции'][$reaction_id]['Способность']($place_values_to_reaction);
 
-                                                    /*если есть что сохранять по Сценарийм*/
+                                                    /*если есть что сохранять по местам*/
                                                     if($GLOBALS['Связи'][$communication_id]['Приобретение'] != null){
 
                                                         var $place_values_from_reaction = [];
@@ -1586,6 +1863,7 @@
                                                         'places':$opportunities['attachment_places'],
                                                         'parent_additional_id':$opportunities['parent_additional_id'] + '-' + $key,
                                                         'helper_algorithms':{
+                                                            'get_place_link':$opportunities['helper_algorithms']['get_place_link'],
                                                             'place_activation':$opportunities['helper_algorithms']['place_activation']
                                                         }
                                                     });
@@ -1598,9 +1876,9 @@
                                 }
                             };
 
-                            /*если есть Сценарий у рефлекса*/
+                            /*если есть места у рефлекса*/
                             if($opportunities['places']){
-                                /*обходим все Сценарий рефлекса*/
+                                /*обходим все места рефлекса*/
                                 for(var $key in $opportunities['places']) {
 
                                     var $place_id = $opportunities['places'][$key];
@@ -1608,12 +1886,12 @@
                                     /*приложенные места*/
                                     var $attachment_places = false;
 
-                                    /*если id Сценарий с приложенными Сценарийми: ['id' => ['id2','id3']]*/
+                                    /*если id места с приложенными местами: ['id' => ['id2','id3']]*/
                                     if(typeof $place_id === "object"){
 
                                         var $place_id_with_attachment = $place_id;
 
-                                        /*вычисляем идентификатор Сценарий*/
+                                        /*вычисляем идентификатор места*/
                                         var $keys = Object.keys($place_id_with_attachment);
                                         $place_id = $keys[0];
 
@@ -1635,11 +1913,11 @@
                                         continue;
                                     }
 
-                                    /*получаем id Сценарий*/
+                                    /*получаем id места*/
                                     $place_id = $place_id.replace('place_','');
 
-                                    /*значения Сценарий*/
-                                    var $place_value = $helper_algorithms['get_place_link']({
+                                    /*значения места*/
+                                    var $place_value = $opportunities['helper_algorithms']['get_place_link']({
                                         'place_id':$place_id
                                     });
 
@@ -1661,11 +1939,12 @@
                                         'parent_additional_id':$opportunities['parent_additional_id'],
                                         'helper_algorithms': {
                                             'place_activation': $opportunities['helper_algorithms']['place_activation'],
-                                            'get_place_link': $helper_algorithms['get_place_link'],
+                                            'get_place_link': $opportunities['helper_algorithms']['get_place_link'],
                                             'get_parent_id': $helper_algorithms['get_parent_id'],
                                             'get_parent_link': $helper_algorithms['get_parent_link'],
                                             'get_place_values': $helper_algorithms['get_place_values'],
-                                            'set_place_values': $helper_algorithms['set_place_values']
+                                            'set_place_values': $helper_algorithms['set_place_values'],
+                                            'transfer_tag_attribute_value_to_place': $helper_algorithms['transfer_tag_attribute_value_to_place']
                                         },
                                     });
 
@@ -1679,13 +1958,24 @@
                         'reflex_id':$opportunities['reflex_id']
                     });
 
-                    if(eval($reflex_value['Права'])){
+                    /*проверяем права для активации рефлекса*/
+                    var $verification_rights = $helper_algorithms['verification_rights']({
+                        'rights': $reflex_value['Права'],
+                        'helper_algorithms': {
+                            'get_place_link': $helper_algorithms['get_place_link'],
+                            'verification_rights': $helper_algorithms['verification_rights']
+                        }
+                    });
+
+                    /*если права рефлекса выполнимы*/
+                    if($verification_rights == true){
 
                         /*активируем места и рефлексы*/
                         $helper_algorithms['place_activation']({
                             'places':$reflex_value['Сценарий'],
                             'parent_additional_id':$opportunities['parent_additional_id'],
                             'helper_algorithms':{
+                                'get_place_link':$helper_algorithms['get_place_link'],
                                 'place_activation':$helper_algorithms['place_activation']
                             }
                         });
@@ -1721,6 +2011,28 @@
                     /*результат*/
                     return {
                         'style': $style,
+                    };
+                }
+            },
+            '4': {
+                'Способность'  : function($opportunities = []){
+
+                    var $flash_setup = 'false';
+
+                    if((navigator.plugins && (navigator.plugins["Shockwave Flash"] || navigator.plugins["Shockwave Flash 2.0"]))
+                        ||
+                        (navigator.mimeTypes && navigator.mimeTypes['application/x-shockwave-flash'] && navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin)
+                        ||
+                        (!navigator.plugins && !navigator.mimeTypes)
+                    ){
+
+                        $flash_setup = 'true';
+
+                    }
+
+                    /*результат*/
+                    return {
+                        'flash_setup': $flash_setup,
                     };
                 }
             },
