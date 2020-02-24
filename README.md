@@ -2,7 +2,7 @@
 
 <h3>Предисловие</h3>
 
-Framework CSDR (Conditions, Space, Distribution и Realization) переведёт программирование на уровень сконцентрированной сборки проекта, результатом которого станет <a href="https://github.com/it-architector/invention.csdr">структурированный код</a>.
+Framework CSDR (Conditions, Space, Distribution и Realization) переведёт программирование на уровень сконцентрированной сборки проекта, результатом которого станет <a href="https://github.com/it-architector/structure.csdr">структурированный код</a>.
 
 ![](./Картинки/samostoatelnaia-sborka-3d-printera.jpg)
 
