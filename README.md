@@ -39,6 +39,8 @@ Framework CSDR (Conditions, Space, Distribution и Realization) переведё
 3. Ход сборки
 
 ![](./Картинки/program/shablon1.png)
+    
+![---------------------](./Картинки/hr.png)
 
 <h2>Ход сборки</h2>
 
