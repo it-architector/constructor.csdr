@@ -4,7 +4,7 @@
 
 Применяя framework CSDR (Conditions, Space, Distribution и Realization) можно быть уверенным, что программирование будет на уровне сконцентрированной сборки проекта, результатом которого станет качественный код.
 
-![](./Картинки/robot.jpg)
+![](./Картинки/samostoatelnaia-sborka-3d-printera.jpg)
 
 
 <h3>Навигация</h3>
