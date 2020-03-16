@@ -2,7 +2,7 @@
 
 <h3>Предисловие</h3>
 
-Применяя Framework CSDR вы обретаете возможность визуально программировать <a href="https://github.com/it-architector/structure.csdr">структурированный код</a>.
+С Framework'ом CSDR вы обретаете возможность визуально программировать <a href="https://github.com/it-architector/structure.csdr">структурированный код</a>.
 
 ![](./Картинки/samostoatelnaia-sborka-3d-printera.jpg)
 
