@@ -129,11 +129,3 @@
 
 Можете помочь в визуализации? -> Помогите! Связь по скайпу (poryadok2017) или емейлу (it@framework-csdr.ru)
 
-
-![---------------------](./Картинки/hr.png)
-
-<h2>Ссылки</h2>
-
-Проект поддерживают:
-
-![](./Картинки/develnext.png) <a target="_blank" href="http://develnext.org/ru/?from=framework+csdr">DevelNext</a><br>
