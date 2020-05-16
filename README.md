@@ -4,7 +4,7 @@
 
 С Framework'ом CSDR вы обретаете возможность визуально проектировать <a href="https://github.com/it-architector/code.csdr">конструктивный код</a>, централизуя весь функционал программы в сценариях.
 
-![](./Картинки/samostoatelnaia-sborka-3d-printera.jpg)
+![](./Картинки/визуализация.jpg)
 
 
 <h3>Навигация</h3>
