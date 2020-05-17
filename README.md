@@ -2,7 +2,7 @@
 
 <h3>Предисловие</h3>
 
-С Framework'ом CSDR вы обретаете возможность визуально проектировать <a href="https://github.com/it-architector/programming.csdr">конструктивный код</a>, централизуя весь функционал программы в сценариях.
+С Framework'ом CSDR вы обретаете возможность визуально проектировать <a href="https://github.com/it-architector/programming.csdr">конструктивный код</a>.
 
 ![](./Картинки/визуализация.jpg)
 
