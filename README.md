@@ -1,8 +1,8 @@
-# Framework CSDR
+# CSDR конструктор
 
 <h3>Предисловие</h3>
 
-С Framework'ом CSDR вы обретаете возможность визуально проектировать <a href="https://github.com/it-architector/projecting.csdr">конструктивный код</a>.
+CSDR конструктор предназначен для визуального проектирования <a href="https://github.com/it-architector/projecting.csdr">конструктивного кода</a> любого языка программирования.
 
 ![](./Картинки/визуализация.jpg)
 
