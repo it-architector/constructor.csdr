@@ -2,7 +2,7 @@
 
 <h3>Предисловие</h3>
 
-CSDR среда предназначена для визуального построения модулей в согласии с <a href="https://github.com/it-architector/right.csdr">порядком CSDR</a>.
+CSDR среда предназначена для визуального построения модульного кода в согласии с <a href="https://github.com/it-architector/right.csdr">порядком CSDR</a>.
 
 ![](./Картинки/konstruktory.jpg)
 
